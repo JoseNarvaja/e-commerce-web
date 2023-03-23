@@ -1,0 +1,17 @@
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\bin\Debug\net7.0\ECommerceWeb.DataAccess.deps.json
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\bin\Debug\net7.0\ECommerceWeb.DataAccess.runtimeconfig.json
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\bin\Debug\net7.0\ECommerceWeb.DataAccess.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\bin\Debug\net7.0\ECommerceWeb.DataAccess.pdb
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\bin\Debug\net7.0\ECommerceWeb.Models.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\bin\Debug\net7.0\ECommerceWeb.Models.pdb
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.csproj.AssemblyReference.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.AssemblyInfoInputs.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.AssemblyInfo.cs
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.csproj.CoreCompileInputs.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.csproj.CopyComplete
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\refint\ECommerceWeb.DataAccess.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.pdb
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ECommerceWeb.DataAccess.genruntimeconfig.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.DataAccess\obj\Debug\net7.0\ref\ECommerceWeb.DataAccess.dll

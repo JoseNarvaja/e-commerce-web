@@ -1,0 +1,12 @@
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\bin\Debug\net7.0\ECommerceWeb.Models.deps.json
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\bin\Debug\net7.0\ECommerceWeb.Models.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\bin\Debug\net7.0\ECommerceWeb.Models.pdb
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.csproj.AssemblyReference.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.AssemblyInfoInputs.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.AssemblyInfo.cs
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.csproj.CoreCompileInputs.cache
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\refint\ECommerceWeb.Models.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ECommerceWeb.Models.pdb
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb.Models\obj\Debug\net7.0\ref\ECommerceWeb.Models.dll
