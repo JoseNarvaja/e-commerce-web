@@ -1,4 +1,6 @@
 using ECommerceWeb.DataAccess.Data;
+using ECommerceWeb.DataAccess.Repository;
+using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +13,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddIdentity<Usuario, IdentityRole>().AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-
-
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

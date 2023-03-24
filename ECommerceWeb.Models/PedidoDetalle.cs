@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceWeb.Models
 {
-    public class DetallePedido
+    public class PedidoDetalle
     {
         [Key]
         public int IdDetallePedido { get; set;}

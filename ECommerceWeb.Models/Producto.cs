@@ -20,7 +20,7 @@ namespace ECommerceWeb.Models
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public string Descripcion { get; set; }
 
-        public string? marca { get; set; }
+        public string? Marca { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [Range(0, float.MaxValue)]

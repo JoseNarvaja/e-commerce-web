@@ -46,7 +46,7 @@ namespace ECommerceWeb.DataAccess.Migrations
 
                     b.HasIndex("IdUsuario");
 
-                    b.ToTable("CarritoCompras");
+                    b.ToTable("CarritoCompra");
                 });
 
             modelBuilder.Entity("ECommerceWeb.Models.Categoria", b =>
@@ -67,31 +67,7 @@ namespace ECommerceWeb.DataAccess.Migrations
 
                     b.HasKey("IdCategoria");
 
-                    b.ToTable("Categorias");
-                });
-
-            modelBuilder.Entity("ECommerceWeb.Models.DetallePedido", b =>
-                {
-                    b.Property<int>("IdDetallePedido")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDetallePedido"));
-
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdPedido")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PrecioIndividual")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdDetallePedido");
-
-                    b.HasIndex("IdPedido");
-
-                    b.ToTable("DetallePedido");
+                    b.ToTable("Categoria");
                 });
 
             modelBuilder.Entity("ECommerceWeb.Models.Pedido", b =>
@@ -145,7 +121,31 @@ namespace ECommerceWeb.DataAccess.Migrations
 
                     b.HasIndex("IdUsuario");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("Pedido");
+                });
+
+            modelBuilder.Entity("ECommerceWeb.Models.PedidoDetalle", b =>
+                {
+                    b.Property<int>("IdDetallePedido")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDetallePedido"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPedido")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrecioIndividual")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdDetallePedido");
+
+                    b.HasIndex("IdPedido");
+
+                    b.ToTable("PedidoDetalle");
                 });
 
             modelBuilder.Entity("ECommerceWeb.Models.Producto", b =>
@@ -163,6 +163,9 @@ namespace ECommerceWeb.DataAccess.Migrations
                     b.Property<int>("IdCategoria")
                         .HasColumnType("int");
 
+                    b.Property<string>("Marca")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -178,9 +181,6 @@ namespace ECommerceWeb.DataAccess.Migrations
 
                     b.Property<string>("URLImagen")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("marca")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdProducto");
@@ -343,12 +343,10 @@ namespace ECommerceWeb.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -385,12 +383,10 @@ namespace ECommerceWeb.DataAccess.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -446,17 +442,6 @@ namespace ECommerceWeb.DataAccess.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("ECommerceWeb.Models.DetallePedido", b =>
-                {
-                    b.HasOne("ECommerceWeb.Models.Pedido", "Pedido")
-                        .WithMany()
-                        .HasForeignKey("IdPedido")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pedido");
-                });
-
             modelBuilder.Entity("ECommerceWeb.Models.Pedido", b =>
                 {
                     b.HasOne("ECommerceWeb.Models.Usuario", "Usuario")
@@ -466,6 +451,17 @@ namespace ECommerceWeb.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("ECommerceWeb.Models.PedidoDetalle", b =>
+                {
+                    b.HasOne("ECommerceWeb.Models.Pedido", "Pedido")
+                        .WithMany()
+                        .HasForeignKey("IdPedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pedido");
                 });
 
             modelBuilder.Entity("ECommerceWeb.Models.Producto", b =>
