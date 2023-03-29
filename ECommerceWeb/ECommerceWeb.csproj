@@ -25,9 +25,4 @@
     <ProjectReference Include="..\ECommerceWeb.Utility\ECommerceWeb.Utility.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\" />
-    <Folder Include="Areas\Cliente\" />
-  </ItemGroup>
-
 </Project>

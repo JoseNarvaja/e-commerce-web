@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E3lab2zwOZGo+36QXQXibSt1MIkaY8b6Byytd6ADsTc=",
+  "Hash": "eLaRVCcVdmZ+oZRxV2m5syVWUjPZalS9/J8wBIt9Z7o=",
   "Source": "ECommerceWeb",
   "BasePath": "_content/ECommerceWeb",
   "Mode": "Default",
@@ -1037,46 +1037,12 @@
       "OriginalItemSpec": "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.4\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\ECommerceWeb.styles.css",
-      "SourceId": "ECommerceWeb",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/ECommerceWeb",
-      "RelativePath": "ECommerceWeb.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\bundle\\ECommerceWeb.styles.css"
-    },
-    {
-      "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\ECommerceWeb.bundle.scp.css",
-      "SourceId": "ECommerceWeb",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/ECommerceWeb",
-      "RelativePath": "ECommerceWeb.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\ECommerceWeb.bundle.scp.css"
-    },
-    {
-      "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\css\\Layout.css",
       "SourceId": "ECommerceWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\",
       "BasePath": "_content/ECommerceWeb",
-      "RelativePath": "css/site.css",
+      "RelativePath": "css/Layout.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,7 +1051,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot\\css\\Layout.css"
     },
     {
       "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\favicon.ico",
@@ -1105,12 +1071,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\site.js",
+      "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\prodIndex.js",
       "SourceId": "ECommerceWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\",
       "BasePath": "_content/ECommerceWeb",
-      "RelativePath": "js/site.js",
+      "RelativePath": "js/prodIndex.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1119,7 +1085,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
+      "OriginalItemSpec": "wwwroot\\js\\prodIndex.js"
     },
     {
       "Identity": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

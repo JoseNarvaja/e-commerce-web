@@ -1,20 +1,16 @@
 {
   "Files": [
     {
-      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\ECommerceWeb.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ECommerceWeb.bundle.scp.css"
-    },
-    {
-      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\css\\Layout.css",
+      "PackagePath": "staticwebassets\\css\\Layout.css"
     },
     {
       "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\prodIndex.js",
+      "PackagePath": "staticwebassets\\js\\prodIndex.js"
     },
     {
       "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\lib\\bootstrap\\LICENSE",

@@ -16,6 +16,34 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Admin/Views/Producto/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Admin/Views/Producto/Upsert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdG9cVXBzZXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Cliente/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50ZVxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Cliente/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50ZVxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Cliente/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50ZVxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -172,16 +200,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/Shared/_LoginPartial.cshtml]
@@ -199,7 +223,3 @@ build_metadata.AdditionalFiles.CssScope =
 [D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Basura_Escritorio/UTN/Program/CURSO NET/ASP NET/Proyecto_ecommerce/ECommerceWeb/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-j9fgwoox9j

@@ -1,0 +1,35 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-1: #7D6162;
+    --color-2: #968D8F;
+    --color-3: #648EA7;
+    --color-4: #231D1F;
+    --text-1: #FFFFFF;
+    --background: #F0EDF0;
+}
+
+body{
+    background-color: var(--background);
+}
+
+/*navbar*/
+
+.navbar-brand{
+    color: var(--text-1) !important;
+    font: bold 1.9rem sans-serif;
+}
+
+.nav-link{
+    color: var(--text-1) !important;
+}
+
+.navbar {
+    background: var(--color-1);
+    padding: 0.5rem;
+    height: 62px;
+}

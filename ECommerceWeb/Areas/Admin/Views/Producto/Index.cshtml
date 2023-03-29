@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Producto>
+
+
+<div class="container-md">
+    <h2>Listado de productos</h2>
+    <a class="btn btn-primary mb-3">Crear producto</a>
+    <table id="prodtable" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Precio Descuento</th>
+                <th>Marca</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prod in Model)
+            {
+                <tr>
+                    <td>@prod.Nombre</td>
+                    <td>@prod.Precio</td>
+                    <td>@prod.PrecioDescuento</td>
+                    <td>@prod.Marca</td>
+                    <td>@prod.Categoria.Nombre</td>
+                    <td>
+                        <a class="btn btn-primary m-1" href="#">Editar</a>
+                        <a class="btn btn-danger m-1" href="#">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Precio Descuento</th>
+                <th>Marca</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
