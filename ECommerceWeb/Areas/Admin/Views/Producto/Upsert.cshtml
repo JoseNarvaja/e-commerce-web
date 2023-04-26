@@ -1,1 +1,77 @@
-﻿@model int
+﻿@model ECommerceWeb.Models.ViewModels.ProductoVM;
+<link rel="stylesheet" href="/css/productoUpsert.css" />
+
+<form class="container-lg" method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <h2>@(Model.Producto.IdProducto > 0 ? "Actualizar" : "Crear") Producto</h2>
+    <input hidden asp-for="Producto.IdProducto" />
+    <input hidden asp-for="Producto.URLImagen" />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Producto.Nombre"></label>
+                    <input asp-for="Producto.Nombre" class="form-control" placeholder="Nombre del producto" />
+                    <span asp-validation-for="Producto.Nombre" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="Producto.Marca"></label>
+                    <input asp-for="Producto.Marca" class="form-control" placeholder="Marca" />
+                    <span asp-validation-for="Producto.Marca" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Producto.Descripcion"></label>
+                <textarea asp-for="Producto.Descripcion" rows="3" class="form-control" placeholder="Descripcion del producto" id="trumbowyg-text"></textarea>
+                <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Producto.Precio"></label>
+                    <input asp-for="Producto.Precio" class="form-control" />
+                    <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="Producto.PrecioDescuento"></label>
+                    <input asp-for="Producto.PrecioDescuento" class="form-control" />
+                    <span asp-validation-for="Producto.PrecioDescuento" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Producto.URLImagen"></label>
+                <input type="file" id="URLImagen" name="file" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Producto.IdCategoria"></label>
+                <select asp-for="Producto.IdCategoria" asp-items="@Model.Categorias" class="form-select">
+                    <option disabled selected>Seleccione una categoria</option>
+                </select>
+                <span asp-validation-for="Producto.IdCategoria" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @if (Model.Producto.IdProducto > 0)
+                {
+                    <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+                }
+                else
+                {
+                    <button type="submit" onclick="return validarImagen()" class="btn btn-primary">Crear producto</button>
+                }
+            </div>
+        </div>
+        <div class="col-2">
+            <img src="@Model.Producto.URLImagen" width="100%" id="productoImagen" />
+        </div>
+
+    </div>
+    
+</form>
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    <script src="~/js/productoUpsert.js"></script>
+}

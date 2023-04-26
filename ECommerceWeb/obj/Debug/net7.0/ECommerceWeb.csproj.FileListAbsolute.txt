@@ -287,3 +287,13 @@ D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceW
 D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\obj\Debug\net7.0\ECommerceWeb.pdb
 D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\obj\Debug\net7.0\ECommerceWeb.genruntimeconfig.cache
 D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\obj\Debug\net7.0\ref\ECommerceWeb.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\System.Web.Mvc.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\System.Web.Razor.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\System.Web.Helpers.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\System.Web.WebPages.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll
+D:\Basura_Escritorio\UTN\Program\CURSO NET\ASP NET\Proyecto_ecommerce\ECommerceWeb\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

@@ -5,12 +5,28 @@
       "PackagePath": "staticwebassets\\css\\Layout.css"
     },
     {
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\css\\productoUpsert.css",
+      "PackagePath": "staticwebassets\\css\\productoUpsert.css"
+    },
+    {
       "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\prodIndex.js",
-      "PackagePath": "staticwebassets\\js\\prodIndex.js"
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\images\\productos\\ffbf2c6a-4ea5-469f-9dea-caca491a8a3b.jpg",
+      "PackagePath": "staticwebassets\\images\\productos\\ffbf2c6a-4ea5-469f-9dea-caca491a8a3b.jpg"
+    },
+    {
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\layout.js",
+      "PackagePath": "staticwebassets\\js\\layout.js"
+    },
+    {
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\productoIndex.js",
+      "PackagePath": "staticwebassets\\js\\productoIndex.js"
+    },
+    {
+      "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\js\\productoUpsert.js",
+      "PackagePath": "staticwebassets\\js\\productoUpsert.js"
     },
     {
       "Id": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\wwwroot\\lib\\bootstrap\\LICENSE",

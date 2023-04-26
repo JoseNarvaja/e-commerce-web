@@ -1,0 +1,23 @@
+﻿@if (TempData["exito"] != null)
+{
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `@TempData["exito"]`,
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+}
+@if (TempData["error"] != null)
+{
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `TempData["error"]`,
+            footer: '<a href="">Why do I have this issue?</a>'
+        })
+    </script>
+}

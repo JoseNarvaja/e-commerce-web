@@ -3,7 +3,7 @@
 
 <div class="container-md">
     <h2>Listado de productos</h2>
-    <a class="btn btn-primary mb-3">Crear producto</a>
+    <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Producto" asp-action="Upsert">Crear producto</a>
     <table id="prodtable" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -25,8 +25,8 @@
                     <td>@prod.Marca</td>
                     <td>@prod.Categoria.Nombre</td>
                     <td>
-                        <a class="btn btn-primary m-1" href="#">Editar</a>
-                        <a class="btn btn-danger m-1" href="#">Borrar</a>
+                        <a class="btn btn-primary m-1" asp-area="Admin" asp-controller="Producto" asp-action="Upsert" asp-route-id="@prod.IdProducto">Editar</a>
+                        <a class="btn btn-danger m-1" onclick="validarBorrado(@prod.IdProducto)">Borrar</a>
                     </td>
                 </tr>
             }
@@ -44,3 +44,6 @@
     </table>
 </div>
 
+@section Scripts{
+    <script src="~/js/productoIndex.js"></script>
+}

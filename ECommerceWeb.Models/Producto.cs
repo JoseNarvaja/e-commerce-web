@@ -27,14 +27,18 @@ namespace ECommerceWeb.Models
         public float Precio { get; set; }
 
         [Range(0, float.MaxValue)]
+        [Display(Name = "Precio de descuento (opcional)")]
         public float? PrecioDescuento { get; set; }
         [Range(1,100)]
         public float? PorcentajeDescuento { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
+        [ValidateNever]
+        [Display(Name = "Imagen")]
         public string URLImagen { get; set; }
 
         [Required]
+        [Display(Name ="Categoria")]
         public int IdCategoria { get; set; }
 
         [ForeignKey("IdCategoria")]
