@@ -97,8 +97,8 @@ namespace ECommerceWeb.Areas.Admin.Controllers
             var producto = _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto == id);
             if(producto == null)
             {
+                TempData["error"] = "No se pudo borrar el producto";
                 return RedirectToAction("Index");
-                //todo
             }
 
             var imagenProducto = Path.Combine(_hostEnviroment.WebRootPath, producto.URLImagen.TrimStart('\\'));

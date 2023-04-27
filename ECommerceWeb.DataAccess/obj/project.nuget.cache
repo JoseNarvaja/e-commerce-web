@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mE1fuAOsQf+Nvb1aBh3HYIPgzpksiJrYREcwBTVKyzqk11JI0N7ku6rdQnnjLOj++IRHGsu/yb6sBE8UhuEz5Q==",
+  "dgSpecHash": "g+y+BtPincLMZiQBUM8eL3Nq+eeEyjAPKeLcyT+0U4pz0qNQSGR5bhLAWSJ2wn1mqBE6IhYw/jzPIKH6nwWi+g==",
   "success": true,
-  "projectFilePath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb.DataAccess\\ECommerceWeb.DataAccess.csproj",
+  "projectFilePath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\e-commerce-web\\ECommerceWeb.DataAccess\\ECommerceWeb.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

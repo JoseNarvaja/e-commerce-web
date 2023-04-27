@@ -1,8 +1,8 @@
 ﻿@model ECommerceWeb.Models.ViewModels.ProductoVM;
 <link rel="stylesheet" href="/css/productoUpsert.css" />
 
-<form class="container-lg" method="post" asp-action="Upsert" enctype="multipart/form-data">
-    <h2>@(Model.Producto.IdProducto > 0 ? "Actualizar" : "Crear") Producto</h2>
+<form class="container-lg formulario" method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <h2 class="text-center m-3">@(Model.Producto.IdProducto > 0 ? "Actualizar" : "Crear") Producto</h2>
     <input hidden asp-for="Producto.IdProducto" />
     <input hidden asp-for="Producto.URLImagen" />
 
@@ -22,7 +22,7 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Producto.Descripcion"></label>
-                <textarea asp-for="Producto.Descripcion" rows="3" class="form-control" placeholder="Descripcion del producto" id="trumbowyg-text"></textarea>
+                <textarea asp-for="Producto.Descripcion" rows="5" class="form-control" placeholder="Descripcion del producto" id="trumbowyg-text"></textarea>
                 <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
             </div>
             <div class="row mb-3">
@@ -59,9 +59,13 @@
                 }
             </div>
         </div>
-        <div class="col-2">
-            <img src="@Model.Producto.URLImagen" width="100%" id="productoImagen" />
-        </div>
+        @if(Model.Producto.IdProducto > 0)
+        {
+            <div class="col-2">
+                <img src="@Model.Producto.URLImagen" width="100%" id="productoImagen" />
+            </div>
+        }
+
 
     </div>
     

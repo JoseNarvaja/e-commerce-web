@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GPwy13zE0zH11qxYcDe0Le76bfqYGwnlqbuuCKztoT5I20A7m1Y1MmdHE75tL9nM+Au4ygC+HWlt5mPh9S6KLg==",
+  "dgSpecHash": "kbtrsQJKzeVh/ZNhBEmlVbBq7EY+tFNXbTbRCr+uQY2lI+BCC2urdaqcPWw6FwJeTPoIyYMDrQaULr8leYwXkg==",
   "success": true,
-  "projectFilePath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb\\ECommerceWeb.csproj",
+  "projectFilePath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\e-commerce-web\\ECommerceWeb\\ECommerceWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

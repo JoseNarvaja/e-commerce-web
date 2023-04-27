@@ -1,0 +1,44 @@
+﻿@model ECommerceWeb.Models.Categoria;
+<link rel="stylesheet" href="/css/productoUpsert.css" />
+
+<form class="container-lg formulario" method="post" asp-action="Upsert">
+    <h2 class="text-center m-3">@(Model.IdCategoria > 0 ? "Actualizar" : "Crear") Categoria</h2>
+    <input hidden asp-for="IdCategoria" />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Nombre"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Nombre de la categoria" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Descripcion"></label>
+                <textarea asp-for="Descripcion" rows="5" class="form-control" placeholder="Descripcion" id="trumbowyg-text"></textarea>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @if (Model.IdCategoria > 0)
+                {
+                    <button type="submit" class="btn btn-primary">Actualizar Categoria</button>
+                }
+                else
+                {
+                    <button type="submit" onclick="return validarImagen()" class="btn btn-primary">Crear Categoria</button>
+                }
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    <script src="~/js/categoriaUpsert.js"></script>
+}

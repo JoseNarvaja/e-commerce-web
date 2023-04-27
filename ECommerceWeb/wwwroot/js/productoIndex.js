@@ -13,7 +13,7 @@
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Confirmar acción',
-        cancelButtonText: 'Cancelar',
+        cancelButtonText: 'Cancelar ',
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {

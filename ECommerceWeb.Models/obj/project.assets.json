@@ -8410,11 +8410,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb.Models\\ECommerceWeb.Models.csproj",
+      "projectUniqueName": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\e-commerce-web\\ECommerceWeb.Models\\ECommerceWeb.Models.csproj",
       "projectName": "ECommerceWeb.Models",
-      "projectPath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb.Models\\ECommerceWeb.Models.csproj",
+      "projectPath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\e-commerce-web\\ECommerceWeb.Models\\ECommerceWeb.Models.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb.Models\\obj\\",
+      "outputPath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\e-commerce-web\\ECommerceWeb.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

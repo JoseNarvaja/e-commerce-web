@@ -11,6 +11,7 @@
     --color-4: #231D1F;
     --text-1: #FFFFFF;
     --background: #F0EDF0;
+    font-family: 'Segoe UI' !important;
 }
 
 body{

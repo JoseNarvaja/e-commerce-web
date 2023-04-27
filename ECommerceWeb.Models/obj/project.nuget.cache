@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iEdeCUALlWiYxWpAmNceiADreQMgbHiJ4sNnWagYxmubjmK2WcZasdZUziwIkR+rAmlyzCmDe8SXdq0ZmaxNBw==",
+  "dgSpecHash": "wbeqauwVYRCPxQCCB6OeYgxlm01aBvSbgiiXuE7ZgR9Hp6wLJ0E34NmPLTn2NoReL/CQOx4Am+mcdACw4rNCgA==",
   "success": true,
-  "projectFilePath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\ECommerceWeb.Models\\ECommerceWeb.Models.csproj",
+  "projectFilePath": "D:\\Basura_Escritorio\\UTN\\Program\\CURSO NET\\ASP NET\\Proyecto_ecommerce\\e-commerce-web\\ECommerceWeb.Models\\ECommerceWeb.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.9\\microsoft.aspnet.mvc.5.2.9.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.9\\microsoft.aspnet.razor.3.2.9.nupkg.sha512",

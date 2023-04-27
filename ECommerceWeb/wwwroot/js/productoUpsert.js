@@ -16,5 +16,5 @@ $('#trumbowyg-text').trumbowyg({
         ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
         ['unorderedList', 'orderedList'],
         ['removeformat']
-    ],
+    ]
 });

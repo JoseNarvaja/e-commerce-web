@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Categoria>
+
+<div class="container-md">
+    <h2 class="text-center d-block">Listado de Categorias</h2>
+    <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Categoria" asp-action="Upsert">Crear producto</a>
+    <table id="prodtable" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categoria in Model)
+            {
+                <tr>
+                    <td>@categoria.Nombre</td>
+                    <td>@Html.Raw(categoria.Descripcion)</td>
+                    <td>
+                        <a class="btn btn-primary m-1" asp-area="Admin" asp-controller="Categoria" asp-action="Upsert" asp-route-id="@categoria.IdCategoria">Editar</a>
+                        <a class="btn btn-danger m-1" onclick="validarBorrado(@categoria.IdCategoria)">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/categoriaIndex.js"></script>
+}

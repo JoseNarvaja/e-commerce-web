@@ -1,4 +1,14 @@
-﻿#productoImagen{
+﻿@import './Layout.css';
+
+#productoImagen{
     border-radius: 6px;
     border: 1px solid;
+}
+
+label{
+    font-weight: bold;
+}
+
+textarea{
+    background-color: white !important;
 }
