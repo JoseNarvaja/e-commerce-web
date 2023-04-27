@@ -37,9 +37,11 @@ namespace ECommerceWeb.Areas.Admin.Controllers
         public IActionResult Delete([FromRoute] int id)
         {
             Categoria categoria = _unitOfWork.Categoria.GetFirstOrDefault(u => u.IdCategoria == id);
-            if(categoria == null)
+
+            IEnumerable<Producto> productosAsociados = _unitOfWork.Producto.GetAll(u => u.IdCategoria == id);
+            if(productosAsociados.Count() >= 1)
             {
-                TempData["erorr"] = "No se pudo borrar la categoria";
+                TempData["error"] = "No se puede eliminar una categoria si tiene productos asociados";
                 return RedirectToAction("Index");
             }
             _unitOfWork.Categoria.Remove(categoria);

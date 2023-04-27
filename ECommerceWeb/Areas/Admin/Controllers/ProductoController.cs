@@ -50,6 +50,10 @@ namespace ECommerceWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Upsert(ProductoVM productoVM, IFormFile? file)
         {
+            if(productoVM.Producto.PrecioDescuento > productoVM.Producto.Precio)
+            {
+                ModelState.AddModelError("Producto.PrecioDescuento", "El precio de descuento no puede ser mayor al precio corriente");
+            }
             if(ModelState.IsValid)
             {
                 string wwwRootPath = _hostEnviroment.WebRootPath;
@@ -88,6 +92,12 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                 _unitOfWork.Save();
                return RedirectToAction("Index");
             }
+
+            productoVM.Categorias = _unitOfWork.Categoria.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Nombre,
+                Value = u.IdCategoria.ToString()
+            });
             return View(productoVM);
         }
 
