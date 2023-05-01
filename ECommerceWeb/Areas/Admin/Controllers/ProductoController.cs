@@ -4,10 +4,14 @@ using ECommerceWeb.Models;
 using ECommerceWeb.Models.ViewModels;
 using ECommerceWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ECommerceWeb.Utility;
+using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerceWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.RolAdmin)]
     public class ProductoController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

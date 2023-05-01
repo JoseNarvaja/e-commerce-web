@@ -1,46 +1,106 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
+<div class="container-sm">
+    <div class="card">
+        <div class="card-header">
+            <h1>Registro</h1>
+            <h2>Crear una nueva cuenta.</h2>
+        </div>
+        <div class="card-body">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Nombre" class="form-control" aria-required="true" placeholder="Nombre" />
+                                    <label asp-for="Input.Nombre">Nombre</label>
+                                    <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Apellido" class="form-control" aria-required="true" placeholder="Apellido" />
+                                    <label asp-for="Input.Apellido">Apellido</label>
+                                    <span asp-validation-for="Input.Apellido" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="nombre@ejemplo.com" />
+                            <label asp-for="Input.Email">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="contraseña" />
+                                    <label asp-for="Input.Password">Contraseña</label>
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="contraseña" />
+                                    <label asp-for="Input.ConfirmPassword">Confirmar Contraseña</label>
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item mt-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Provincia" class="form-control" aria-required="true" placeholder="Provincia" />
+                                    <label asp-for="Input.Provincia">Provincia (opcional)</label>
+                                    <span asp-validation-for="Input.Provincia" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Localidad" class="form-control" aria-required="true" placeholder="Localidad" />
+                                    <label asp-for="Input.Localidad">Localidad (opcional)</label>
+                                    <span asp-validation-for="Input.Localidad" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Direccion" class="form-control" aria-required="true" placeholder="Direccion" />
+                                    <label asp-for="Input.Direccion">Dirección (opcional)</label>
+                                    <span asp-validation-for="Input.Direccion" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.CodigoPostal" class="form-control" aria-required="true" placeholder="CodigoPostal" />
+                                    <label asp-for="Input.CodigoPostal">Codigo Postal (opcional)</label>
+                                    <span asp-validation-for="Input.CodigoPostal" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select"></select>
+                        </div>
+                    </li>
+                    <li class="list-group-item mt-3">
+                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrarse</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="card-footer">
+@*            <h3>Registrarse con</h3>
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
                         </p>
                     </div>
                 }
@@ -57,10 +117,11 @@
                         </div>
                     </form>
                 }
-            }
-        </section>
+            }*@
+        </div>
     </div>
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

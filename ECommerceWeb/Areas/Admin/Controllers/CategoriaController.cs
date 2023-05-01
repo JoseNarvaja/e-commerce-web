@@ -1,10 +1,13 @@
 ﻿using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
+using ECommerceWeb.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.RolAdmin)]
     public class CategoriaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

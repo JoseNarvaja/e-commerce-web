@@ -8,5 +8,8 @@ namespace ECommerceWeb.Utility
 {
     public class SD
     {
+        public const string RolCliente = "Cliente";
+        public const string RolModerador = "Moderador";
+        public const string RolAdmin = "Admin";
     }
 }

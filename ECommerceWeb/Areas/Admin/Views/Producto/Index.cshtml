@@ -2,46 +2,52 @@
 
 
 <div class="container-md">
-    <h2 class="text-center d-block">Listado de productos</h2>
-    <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Producto" asp-action="Upsert">Crear producto</a>
-    <table id="prodtable" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Precio Descuento</th>
-                <th>Marca</th>
-                <th>Categoría</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var prod in Model)
-            {
-                <tr>
-                    <td>@prod.Nombre</td>
-                    <td>@prod.Precio</td>
-                    <td>@prod.PrecioDescuento</td>
-                    <td>@prod.Marca</td>
-                    <td>@prod.Categoria.Nombre</td>
-                    <td>
-                        <a class="btn btn-primary m-1" asp-area="Admin" asp-controller="Producto" asp-action="Upsert" asp-route-id="@prod.IdProducto">Editar</a>
-                        <a class="btn btn-danger m-1" onclick="validarBorrado(@prod.IdProducto)">Borrar</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Precio Descuento</th>
-                <th>Marca</th>
-                <th>Categoría</th>
-                <th>Acciones</th>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center d-block">Listado de productos</h2>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Producto" asp-action="Upsert">Crear producto</a>
+            <table id="prodtable" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Precio Descuento</th>
+                        <th>Marca</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var prod in Model)
+                    {
+                        <tr>
+                            <td>@prod.Nombre</td>
+                            <td>@prod.Precio</td>
+                            <td>@prod.PrecioDescuento</td>
+                            <td>@prod.Marca</td>
+                            <td>@prod.Categoria.Nombre</td>
+                            <td>
+                                <a class="btn btn-primary m-1" asp-area="Admin" asp-controller="Producto" asp-action="Upsert" asp-route-id="@prod.IdProducto">Editar</a>
+                                <a class="btn btn-danger m-1" onclick="validarBorrado(@prod.IdProducto)">Borrar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Precio Descuento</th>
+                        <th>Marca</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
 
 @section Scripts{
