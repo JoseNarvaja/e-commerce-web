@@ -1,1 +1,26 @@
-﻿
+﻿@model IEnumerable<Producto>
+
+<link rel="stylesheet" href="~/css/homeIndex.css" />
+<section class="container d-flex flex-wrap">
+    @foreach (var producto in Model)
+    {
+        <article class="card col-3 m-2 rounded p-2" height="500px">
+            <img src="@producto.URLImagen" class="card-img-top">
+            <div class="card-body">
+                <p class="card-title text-center">@producto.Nombre</p>
+                <div class="d-flex flex-wrap align-content-around justify-content-between">
+                    @if (producto.PrecioDescuento != null)
+                    {
+                        <p class="d-block">@producto.PrecioDescuento.Value.ToString("c")</p>
+                        <p class="d-block">@producto.PorcentajeDescuento.Value.ToString("p") OFF</p>
+                    }
+                    else
+                    {
+                        <p class="d-block">@producto.Precio.ToString("c")</p>
+                    }
+                </div>
+                <a class="btn btn-dark form-control" asp-controller="Home" asp-action="Detalles" asp-route-id="@producto.IdProducto">Detalles</a>
+            </div>
+        </article>
+    }
+</section>

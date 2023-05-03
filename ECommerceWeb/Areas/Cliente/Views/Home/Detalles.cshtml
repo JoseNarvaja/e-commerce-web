@@ -1,0 +1,37 @@
+﻿@model Producto
+
+<link rel="stylesheet" href="~/css/homeDetalles.css" />
+<form method="post">
+    <input hidden asp-for="IdProducto" />
+    <div class="card container p-2 mt-3 rounded">
+        <div class="card-header p-3">
+            <span class="badge bg-info p-2 mt-3 mb-3 mr-4">@Model.Categoria.Nombre</span>
+            <div class="block">
+                <img src="@Model.URLImagen" class="float-left imagen-producto rounded" />
+                <div class="contenido-principal">
+                    <h3>@Model.Nombre</h3>
+                    @if (Model.PrecioDescuento != null)
+                    {
+                        <p><del>@Model.Precio.ToString("c")</del></p>
+                        <div class="d-flex align-baseline">
+                            <p class="d-inline-block precio-descuento"><strong>@Model.PrecioDescuento.Value.ToString("c")</strong></p>
+                            <p class="d-inline-block porcentaje-descuento"><small>@Model.PorcentajeDescuento.Value.ToString("p") OFF</small></p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div><stong>@Model.Precio.ToString("c")</stong></div>
+                    }
+                    <div class="d-flex justify-content-around mt-auto">
+                        <submit class="btn btn-dark form-control m-3 p-2">Añadir al carrito</submit>
+                        <a class="btn btn-dark form-control m-3 p-2">Comprar ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.Raw(Model.Descripcion)
+        </div>
+
+    </div>
+</form>

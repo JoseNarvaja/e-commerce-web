@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ECommerceWeb.Utility;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace ECommerceWeb.Areas.Admin.Controllers
 {
@@ -58,6 +59,16 @@ namespace ECommerceWeb.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("Producto.PrecioDescuento", "El precio de descuento no puede ser mayor al precio corriente");
             }
+
+            if(productoVM.Producto.PrecioDescuento != null)
+            {
+                productoVM.Producto.PorcentajeDescuento = 1 - ((productoVM.Producto.PrecioDescuento) / productoVM.Producto.Precio);
+            }
+            else
+            {
+                productoVM.Producto.PorcentajeDescuento = null;
+            }
+
             if(ModelState.IsValid)
             {
                 string wwwRootPath = _hostEnviroment.WebRootPath;

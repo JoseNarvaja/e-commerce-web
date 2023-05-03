@@ -1,0 +1,16 @@
+﻿.imagen-producto {
+    width: 30%;
+}
+
+.contenido-principal {
+    width: 65%;
+    float: right;
+}
+
+.precio-descuento{
+    margin-right: 1rem;
+}
+
+.porcentaje-descuento{
+    margin-left: 1rem;
+}
