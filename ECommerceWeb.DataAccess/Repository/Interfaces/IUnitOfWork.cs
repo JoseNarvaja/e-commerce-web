@@ -10,7 +10,7 @@ namespace ECommerceWeb.DataAccess.Repository.Interfaces
     {
         public IProductoRepository Producto { get; }
         public ICategoriaRepository Categoria { get; }
-        public ICarritoCompraRepository CarritoCompra { get; }
+        public ICarritoComprasRepository CarritoCompras { get; }
         public IUsuarioRepository Usuario { get; }
         public IPedidoRepository Pedido { get; }
         public IPedidoDetalleRepository PedidoDetalle { get; }

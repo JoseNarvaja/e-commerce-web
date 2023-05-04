@@ -13,7 +13,7 @@ namespace ECommerceWeb.DataAccess.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Producto> Producto { get; set; }
-        public DbSet<CarritoCompra> CarritoCompra { get; set; }
+        public DbSet<CarritoCompras> CarritoCompras { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<PedidoDetalle> PedidoDetalle { get; set; }
