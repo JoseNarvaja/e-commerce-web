@@ -4,10 +4,10 @@
 <section class="container d-flex flex-wrap">
     @foreach (var producto in Model)
     {
-        <article class="card col-3 m-2 rounded p-2" height="500px">
+        <article class="card col-2 m-2 rounded p-2" height="500px">
             <img src="@producto.URLImagen" class="card-img-top">
             <div class="card-body">
-                <p class="card-title text-center">@producto.Nombre</p>
+                <h5 class="card-title text-center">@producto.Nombre</h5>
                 <div class="d-flex flex-wrap align-content-around justify-content-between">
                     @if (producto.PrecioDescuento != null)
                     {

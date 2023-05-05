@@ -1,0 +1,67 @@
+﻿@using ECommerceWeb.Models.ViewModels
+@model CarritoComprasVM
+
+<form method="post">
+    <div class="card mt-3 rounded container-md">
+        <div class="card-header">
+            <h3>Carro de compras</h3>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Seguir comprando</a>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"></li>
+                @foreach (var carro in Model.Carritos)
+                {
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="@carro.Producto.URLImagen" class="rounded">
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h4><strong>@carro.Producto.Nombre</strong></h4>
+                                        @if (carro.Producto.PrecioDescuento != null)
+                                        {
+                                            <p>Precio individual: @carro.Producto.PrecioDescuento.Value.ToString("c")</p>
+                                            <p>Cantidad: @carro.Cantidad</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Precio individual: @carro.Producto.Precio.ToString("c")</p>
+                                            <p>Cantidad: @carro.Cantidad</p>
+                                        }
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a asp-action="Sumar" asp-route-id="@carro.IdCarritoCompra" class="btn btn-secondary"><i class="fa-solid fa-plus"></i></a>
+                                            <a asp-action="Restar" asp-route-id="@carro.IdCarritoCompra" class="btn btn-secondary"><i class="fa-solid fa-minus"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <a asp-action="Borrar" asp-route-id="@carro.IdCarritoCompra" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="card-footer">
+            <h5 class=" d-block text-center">Precio final: @Model.PrecioTotal.ToString("c")</h5>
+            <a class="btn btn-primary mx-auto py-2 d-block my-3">Resumen</a>
+        </div>
+    </div>
+</form>
+
+<style>
+    .list-group-item img {
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+    }
+
+    .card-footer .btn {
+        width: 150px;
+    }
+</style>

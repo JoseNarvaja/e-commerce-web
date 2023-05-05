@@ -30,7 +30,6 @@ body{
 }
 
 .navbar {
-    background: var(--color-1);
+    background: var(--color-1) !important;
     padding: 0.5rem;
-    height: 62px;
 }
