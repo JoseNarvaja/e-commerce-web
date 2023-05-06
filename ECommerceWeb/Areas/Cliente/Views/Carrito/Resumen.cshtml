@@ -1,0 +1,107 @@
+﻿@model CarritoComprasVM
+
+<form method="post">
+    <div class="card container-md mt-3">
+        <div class="card-header">
+            <h5>Resumen del pedido</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-7">
+                    <h5 class="text-info d-block">Detalles de envío</h5>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="col-9">
+                            <input asp-for="Pedido.Nombre" class="form-control" />
+                            <span asp-validation-for="Pedido.Nombre" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Apellido</label>
+                        </div>
+                        <div class="col-9">
+                            <input asp-for="Pedido.Apellido" class="form-control" />
+                            <span asp-validation-for="Pedido.Apellido" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Telefono</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="tel" asp-for="Pedido.Telefono" class="form-control" />
+                            <span asp-validation-for="Pedido.Telefono" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Dirección</label>
+                        </div>
+                        <div class="col-9">
+                            <input asp-for="Pedido.Direccion" class="form-control" />
+                            <span asp-validation-for="Pedido.Direccion" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Localidad</label>
+                        </div>
+                        <div class="col-9">
+                            <input asp-for="Pedido.Localidad" class="form-control" />
+                            <span asp-validation-for="Pedido.Localidad" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Provincia</label>
+                        </div>
+                        <div class="col-9">
+                            <input asp-for="Pedido.Provincia" class="form-control" />
+                            <span asp-validation-for="Pedido.Provincia" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <label>Código Postal</label>
+                        </div>
+                        <div class="col-9">
+                            <input asp-for="Pedido.CodigoPostal" class="form-control" />
+                            <span asp-validation-for="Pedido.CodigoPostal" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <h5 class="text-info">Resumen de orden</h5>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var carrito in Model.Carritos)
+                        {
+                            <li class="list-group-item">
+                                <h6 class="my-0">@carrito.Producto.Nombre</h6>
+                                <small>Cantidad: @carrito.Cantidad</small>
+                            </li>
+                        }
+                        <li class="list-group-item bg-light text-info">
+                            <small class="text-info">Total: </small>
+                            <strong>@Model.Pedido.TotalPedido.ToString("c")</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-12 col-md-8 pt-2">
+                    <p style="color:maroon; font-size:14px;">
+                        Fecha estimada de llegada: @DateTime.Now.AddDays(7).ToShortDateString() - @DateTime.Now.AddDays(16).ToShortDateString()
+                    </p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <button type="submit" value="Place Order" class="btn btn-primary form-control">Realizar pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

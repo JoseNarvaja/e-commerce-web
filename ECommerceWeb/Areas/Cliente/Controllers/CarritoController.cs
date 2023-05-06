@@ -18,8 +18,6 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
-        [Authorize]
         public IActionResult Index()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -28,21 +26,56 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
             CarritoComprasVM = new CarritoComprasVM()
             {
-                Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto")
+                Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto"),
+                Pedido = new()
             };
 
             foreach(var carrito in CarritoComprasVM.Carritos)
             {
                 if(carrito.Producto.PrecioDescuento != null)
                 {
-                    CarritoComprasVM.PrecioTotal += carrito.Producto.PrecioDescuento.Value * carrito.Cantidad;
+                    CarritoComprasVM.Pedido.TotalPedido += carrito.Producto.PrecioDescuento.Value * carrito.Cantidad;
                 }
                 else
                 {
-                    CarritoComprasVM.PrecioTotal += carrito.Producto.Precio * carrito.Cantidad;
+                    CarritoComprasVM.Pedido.TotalPedido += carrito.Producto.Precio * carrito.Cantidad;
                 }
             }
          
+            return View(CarritoComprasVM);
+        }
+
+        public IActionResult Resumen()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            CarritoComprasVM = new CarritoComprasVM()
+            {
+                Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto"),
+                Pedido = new()
+            };
+
+            CarritoComprasVM.Pedido.Usuario = _unitOfWork.Usuario.GetFirstOrDefault(u => u.Id == idUsuario);
+
+            CarritoComprasVM.Pedido.Nombre = CarritoComprasVM.Pedido.Usuario.Nombre;
+            CarritoComprasVM.Pedido.Apellido = CarritoComprasVM.Pedido.Usuario.Apellido;
+            CarritoComprasVM.Pedido.Direccion = CarritoComprasVM.Pedido.Usuario.Direccion;
+            CarritoComprasVM.Pedido.Localidad = CarritoComprasVM.Pedido.Usuario.Localidad;
+            CarritoComprasVM.Pedido.Provincia = CarritoComprasVM.Pedido.Usuario.Provincia;
+
+            foreach (var carrito in CarritoComprasVM.Carritos)
+            {
+                if (carrito.Producto.PrecioDescuento != null)
+                {
+                    CarritoComprasVM.Pedido.TotalPedido += carrito.Producto.PrecioDescuento.Value * carrito.Cantidad;
+                }
+                else
+                {
+                    CarritoComprasVM.Pedido.TotalPedido += carrito.Producto.Precio * carrito.Cantidad;
+                }
+            }
+
             return View(CarritoComprasVM);
         }
 

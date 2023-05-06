@@ -48,8 +48,8 @@
             </ul>
         </div>
         <div class="card-footer">
-            <h5 class=" d-block text-center">Precio final: @Model.PrecioTotal.ToString("c")</h5>
-            <a class="btn btn-primary mx-auto py-2 d-block my-3">Resumen</a>
+            <h5 class=" d-block text-center">Precio final: @Model.Pedido.TotalPedido.ToString("c")</h5>
+            <a class="btn btn-primary mx-auto py-2 d-block my-3" asp-action="Resumen">Resumen</a>
         </div>
     </div>
 </form>

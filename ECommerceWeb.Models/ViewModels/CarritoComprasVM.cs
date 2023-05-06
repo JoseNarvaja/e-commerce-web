@@ -9,6 +9,7 @@ namespace ECommerceWeb.Models.ViewModels
     public class CarritoComprasVM
     {
         public IEnumerable<CarritoCompras> Carritos { get; set; }
-        public double PrecioTotal { get; set; }
+
+        public Pedido Pedido { get; set; }
     }
 }

@@ -19,10 +19,16 @@ namespace ECommerceWeb.Models
         public DateTime FechaPedido { get; set; }
         public DateTime FechaPago { get; set; }
         public DateTime FechaEnvio { get; set; }
+
         [Required]
         public string EstadoPedido { get; set; }
         [Required]
         public string EstadoPago { get;set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public string Nombre { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public string Apellido { get; set; }
+
         [Required(ErrorMessage ="Este campo es obligatorio")]
         public string Direccion { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio")]
@@ -31,6 +37,8 @@ namespace ECommerceWeb.Models
         public string Provincia { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public string Localidad { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public string Telefono { get; set; }
         [Required]
         public float TotalPedido { get; set; }
 
