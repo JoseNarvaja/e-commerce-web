@@ -24,6 +24,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" asp-area="Cliente" asp-controller="Carrito" asp-action="Index"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Pedidos" asp-action="Index">Gestionar Pedidos</a>
+                    </li>
                     @if (User.IsInRole(SD.RolAdmin))
                     {
                         <li class="nav-item dropdown">
@@ -37,9 +43,7 @@
                             </ul>
                         </li>
                     }
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Cliente" asp-controller="Carrito" asp-action="Index"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </li>
+                    
                 </ul>
                 <partial name="_LoginPartial"></partial>
             </div>

@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     $('#prodtable').DataTable({
+        responsive: true,
+        scrollX: true,
         language: {
             lengthMenu: 'Mostrar _MENU_ registros por página',
             zeroRecords: 'No se encontraron registros',

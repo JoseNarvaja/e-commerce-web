@@ -1,6 +1,7 @@
 ﻿using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
 using ECommerceWeb.Models.ViewModels;
+using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -12,6 +13,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
     public class CarritoController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        [BindProperty]
         public CarritoComprasVM CarritoComprasVM { get; set; }
 
         public CarritoController(IUnitOfWork unitOfWork)
@@ -78,6 +80,59 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
             return View(CarritoComprasVM);
         }
+
+        [HttpPost]
+        [ActionName("Resumen")]
+        public IActionResult ResumenPOST(CarritoComprasVM carritoComprasVM)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            CarritoComprasVM.Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Producto");
+
+            CarritoComprasVM.Pedido.FechaPedido = System.DateTime.Now;
+            CarritoComprasVM.Pedido.IdUsuario = idUsuario;
+
+            foreach (var carrito in CarritoComprasVM.Carritos)
+            {
+                if (carrito.Producto.PrecioDescuento != null)
+                {
+                    CarritoComprasVM.Pedido.TotalPedido += carrito.Producto.PrecioDescuento.Value * carrito.Cantidad;
+                }
+                else
+                {
+                    CarritoComprasVM.Pedido.TotalPedido += carrito.Producto.Precio * carrito.Cantidad;
+                }
+            }
+
+            CarritoComprasVM.Pedido.EstadoPedido = SD.EstadoEnProceso;
+
+            _unitOfWork.Pedido.Add(CarritoComprasVM.Pedido);
+            _unitOfWork.Save();
+
+            foreach (var carro in CarritoComprasVM.Carritos)
+            {
+                PedidoDetalle detalle = new PedidoDetalle();
+                detalle.IdProducto = carro.IdProducto;
+                detalle.IdPedido = CarritoComprasVM.Pedido.IdPedido;
+                detalle.Cantidad = carro.Cantidad;
+
+                if(carro.Producto.PrecioDescuento != null)
+                {
+                    detalle.PrecioIndividual = carro.Producto.PrecioDescuento.Value;
+                }
+                else
+                {
+                    detalle.PrecioIndividual = carro.Producto.Precio;
+                }
+                _unitOfWork.PedidoDetalle.Add(detalle);
+            }
+            _unitOfWork.Save();
+
+            TempData["exito"] = "Pedido realizado con exito";
+            return Redirect("/Cliente/Home/Index");
+        }
+
 
         public IActionResult Sumar(int id)
         {

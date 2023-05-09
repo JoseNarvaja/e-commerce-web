@@ -1,0 +1,9 @@
+﻿.list-group-item img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.card-footer .btn {
+    width: 150px;
+}

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Pedido>
+
+@{
+    var estado = Context.Request.Query["estado"];
+    String completado, enProceso, enviado, reembolsado, todos;
+    completado = enProceso = enviado = reembolsado = todos = "text-primary";
+
+    switch (estado)
+    {
+        case "Completado":
+            completado = "active text-white bg-primary";
+            break;
+        case "EnProceso":
+            enProceso = "active text-white bg-primary";
+            break;
+        case "Enviado":
+            enviado = "active text-white bg-primary";
+            break;
+        case "Reembolsado":
+            reembolsado = "active text-white bg-primary";
+            break;
+        default:
+            todos = "active text-white bg-primary";
+            break;
+    }
+}
+
+<div class="container-md mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center d-block">Listado de pedidos</h2>
+        </div>
+        <div class="card-body">
+            <div class="p-2 mb-2">
+                <ul class="list-group list-group-horizontal-sm">
+                    <a asp-controller="Pedidos" asp-action="Index" asp-route-estado="Completado" style="text-decoration:none;">
+                    <li class="list-group-item @completado">Completados</li>
+                    </a>
+                    <a asp-controller="Pedidos" asp-action="Index" asp-route-estado="EnProceso" style="text-decoration:none;">
+                    <li class="list-group-item @enProceso">En Proceso</li>
+                    </a>
+                    <a asp-controller="Pedidos" asp-action="Index" asp-route-estado="Enviado" style="text-decoration:none;">
+                    <li class="list-group-item @enviado">Enviados</li>
+                    </a>
+
+                    <a asp-controller="Pedidos" asp-action="Index" asp-route-estado="Reembolsado" style="text-decoration:none;">
+                    <li class="list-group-item @reembolsado">Reembolsados</li>
+                    </a>
+                    <a asp-controller="Pedidos" asp-action="Index" asp-route-estado="todos" style="text-decoration:none;">
+                    <li class="list-group-item @todos">Todos</li>
+                    </a>
+                </ul>
+            </div>
+            <table id="prodtable" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha del pedido</th>
+                        <th>Total Pedido</th>
+                        <th>Estado pago</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pedido in Model)
+                    {
+                        <tr>
+                            <td>@pedido.IdPedido</td>
+                            <td>@pedido.Nombre</td>
+                            <td>@pedido.Apellido</td>
+                            <td>@pedido.FechaPedido</td>
+                            <td>@pedido.TotalPedido</td>
+                            <td>@pedido.EstadoPago</td>
+                            <td>
+                                <a class="btn btn-primary m-1" asp-area="Admin" asp-controller="Pedidos" asp-action="Detalles" asp-route-id="@pedido.IdPedido">Detalles</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha del pedido</th>
+                        <th>Total Pedido</th>
+                        <th>Estado pago</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/pedidosIndex.js"></script>
+}

@@ -17,7 +17,7 @@ namespace ECommerceWeb.Models
         [Required]
         public int Cantidad { get; set;}
         [Required]
-        public int PrecioIndividual { get; set;}
+        public float PrecioIndividual { get; set;}
 
         [Required]
         public int IdPedido { get; set;}
@@ -25,5 +25,12 @@ namespace ECommerceWeb.Models
         [ForeignKey("IdPedido")]
         [ValidateNever]
         public Pedido Pedido { get; set; }
+
+        [Required]
+        public int IdProducto { get; set;}
+        [Required]
+        [ForeignKey("IdProducto")]
+        [ValidateNever]
+        public Producto Producto { get; set; }
     }
 }

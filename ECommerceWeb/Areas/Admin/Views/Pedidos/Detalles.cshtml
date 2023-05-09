@@ -1,0 +1,149 @@
+﻿@model ECommerceWeb.Models.ViewModels.PedidoVM
+
+<form method="post">
+    <div class="card container-md mt-3">
+        <div class="card-header row">
+            <h4 class="col-8">Resumen del pedido</h4>
+            <div class="col-12 col-sm-4">
+                <a asp-action="Index" class="btn btn-outline-info form-control btn-sm">Volver a listado</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-7">
+                    <h4 class="text-primaty d-block my-2">Detalles de envío</h4>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.Nombre" class="form-control" />
+                            <span asp-validation-for="Pedido.Nombre" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Apellido</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.Apellido" class="form-control" />
+                            <span asp-validation-for="Pedido.Apellido" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Teléfono</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.Telefono" class="form-control" />
+                            <span asp-validation-for="Pedido.Telefono" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Dirección</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.Direccion" class="form-control" />
+                            <span asp-validation-for="Pedido.Direccion" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Código Postal</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.CodigoPostal" class="form-control" />
+                            <span asp-validation-for="Pedido.CodigoPostal" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Localidad</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.Localidad" class="form-control" />
+                            <span asp-validation-for="Pedido.Localidad" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Provincia</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.Provincia" class="form-control" />
+                            <span asp-validation-for="Pedido.Provincia" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>ID del pedido</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.IdPedido" readonly class="form-control" />
+                            <span asp-validation-for="Pedido.IdPedido" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Fecha de pedido</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.FechaPedido" readonly class="form-control" />
+                            <span asp-validation-for="Pedido.FechaPedido" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
+                            <label>Fecha de pago</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.FechaPago" readonly class="form-control" />
+                            <span asp-validation-for="Pedido.FechaPago" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <h4 class="text-primaty d-block my-2">Detalles del pedido</h4>
+                    <label class="btn btn-outline-primary form-control my-2">Estado del pedido - @Model.Pedido.EstadoPedido</label>
+                    <ul class="list-group mb-3">
+                        @foreach (var detalle in Model.Detalles)
+                        {
+                            <li class="list-group-item row">
+                                <div class="col-8">
+                                    <h6 class="my-0 text-primary">@detalle.Producto.Nombre</h6>
+                                    @if(detalle.Producto.PrecioDescuento > 0)
+                                    {
+                                        <small class="text-muted">Precio : @detalle.Producto.PrecioDescuento.Value.ToString("c")</small>
+                                    }
+                                    else
+                                    {
+                                        <small class="text-muted">Precio : @detalle.Producto.Precio.ToString("c")</small>
+                                    }
+                                    <small class="text-muted">Cantidad : @detalle.Cantidad</small>
+                                </div>
+                                <div class="col-4">
+                                    <img src="@detalle.Producto.URLImagen">
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <input type="submit" class="btn btn-primary form-control my-1" value="Enviar Pedido" />
+                    <input type="submit" class="btn btn-primary form-control my-1" value="Reembolsar Pedido" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<style>
+    img{
+        height: 80px;
+        width: 80px;
+        object-fit: cover;
+    }
+</style>
+
+
+
+
