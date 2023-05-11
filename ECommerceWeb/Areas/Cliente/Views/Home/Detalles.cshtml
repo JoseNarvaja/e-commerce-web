@@ -15,7 +15,7 @@
                         <p><del>@Model.Producto.Precio.ToString("c")</del></p>
                         <div class="d-flex align-baseline">
                             <p class="d-inline-block precio-descuento"><strong>@Model.Producto.PrecioDescuento.Value.ToString("c")</strong></p>
-                            <p class="d-inline-block porcentaje-descuento"><small>@Model.Producto.PorcentajeDescuento.Value.ToString("p") OFF</small></p>
+                            <p class="d-inline-block porcentaje-descuento text-success fw-semibold"><small>@Model.Producto.PorcentajeDescuento.Value.ToString("p") OFF</small></p>
                         </div>
                     }
                     else

@@ -8,7 +8,33 @@
         Layout = "/Views/Shared/_Layout.cshtml";
     }
 }
-<div class="container-sm">
+
+<div class="container-sm mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h1>Gestione su cuenta</h1>
+        </div>
+        <div class="card-body">
+            <h2>Cambiar configuración de la cuenta</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <partial name="_ManageNav" />
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+
+@*<div class="container-sm">
     <h1>Gestiona tu cuenta</h1>
 
     <div>
@@ -23,9 +49,4 @@
             </div>
         </div>
     </div>
-</div>
-
-
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+</div>*@

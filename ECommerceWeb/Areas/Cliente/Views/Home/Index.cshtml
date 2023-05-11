@@ -12,7 +12,7 @@
                     @if (producto.PrecioDescuento != null)
                     {
                         <p class="d-block">@producto.PrecioDescuento.Value.ToString("c")</p>
-                        <p class="d-block">@producto.PorcentajeDescuento.Value.ToString("p") OFF</p>
+                        <p class="d-block text-success fw-semibold">@producto.PorcentajeDescuento.Value.ToString("p") OFF</p>
                     }
                     else
                     {
