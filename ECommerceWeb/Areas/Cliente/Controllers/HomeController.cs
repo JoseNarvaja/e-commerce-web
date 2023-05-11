@@ -1,7 +1,9 @@
 ﻿using ECommerceWeb.DataAccess.Repository;
 using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
+using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -48,13 +50,17 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             {
                 carritoDeDB.Cantidad += carrito.Cantidad;
                 _unitOfWork.CarritoCompras.Update(carritoDeDB);
+                _unitOfWork.Save();
             }
             else
             {
                 _unitOfWork.CarritoCompras.Add(carrito);
+                _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SesionCarroCompras,
+                    _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario).Count());
             }
+
             TempData["exito"] = "Carrito actualizado con exito";
-            _unitOfWork.Save();
 
             return RedirectToAction("Index");
         }

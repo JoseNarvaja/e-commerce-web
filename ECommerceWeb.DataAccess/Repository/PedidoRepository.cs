@@ -27,7 +27,7 @@ namespace ECommerceWeb.DataAccess.Repository
         public void UpdateEstado(Pedido pedido, string estado)
         {
             var pedidoDb = _contexto.Pedido.FirstOrDefault(u=> u.IdPedido== pedido.IdPedido);
-            pedidoDb.EstadoPago = estado;
+            pedidoDb.EstadoPedido = estado;
         }
 
         public void UpdateEstadoPago(Pedido pedido, string estado)

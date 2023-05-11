@@ -20,5 +20,7 @@ namespace ECommerceWeb.Utility
         public const string EstadoPagoPendiente = "Pendiente";
         public const string EstadoPagoConcretado = "Concretado";
         public const string EstadoPagoReembolsado = "Reembolsado";
+
+        public const string SesionCarroCompras = "SesionCarroCompras";
     }
 }

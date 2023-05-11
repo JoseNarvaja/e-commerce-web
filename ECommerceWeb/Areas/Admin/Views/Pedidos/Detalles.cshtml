@@ -17,8 +17,16 @@
                             <label>Nombre</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.Nombre" class="form-control" />
-                            <span asp-validation-for="Pedido.Nombre" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.Nombre" type="text" class="form-control" />
+                                <span asp-validation-for="Pedido.Nombre" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input asp-for="Pedido.Nombre" readonly type="text" class="form-control" />
+                            }
+
                         </div>
                     </div>
                     <div class="row my-2">
@@ -26,8 +34,15 @@
                             <label>Apellido</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.Apellido" class="form-control" />
-                            <span asp-validation-for="Pedido.Apellido" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.Apellido" class="form-control" />
+                                <span asp-validation-for="Pedido.Apellido" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input asp-for="Pedido.Apellido" readonly type="text" class="form-control" />
+                            }
                         </div>
                     </div>
                     <div class="row my-2">
@@ -35,8 +50,15 @@
                             <label>Teléfono</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.Telefono" class="form-control" />
-                            <span asp-validation-for="Pedido.Telefono" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.Telefono" class="form-control" />
+                                <span asp-validation-for="Pedido.Telefono" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input asp-for="Pedido.Telefono" readonly type="text" class="form-control" />
+                            }
                         </div>
                     </div>
                     <div class="row my-2">
@@ -44,8 +66,15 @@
                             <label>Dirección</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.Direccion" class="form-control" />
-                            <span asp-validation-for="Pedido.Direccion" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.Direccion" class="form-control" />
+                                <span asp-validation-for="Pedido.Direccion" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input asp-for="Pedido.Direccion" readonly class="form-control" />
+                            }
                         </div>
                     </div>
                     <div class="row my-2">
@@ -53,8 +82,15 @@
                             <label>Código Postal</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.CodigoPostal" class="form-control" />
-                            <span asp-validation-for="Pedido.CodigoPostal" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.CodigoPostal" class="form-control" />
+                                <span asp-validation-for="Pedido.CodigoPostal" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input readonly asp-for="Pedido.CodigoPostal" class="form-control" />
+                            }
                         </div>
                     </div>
                     <div class="row my-2">
@@ -62,8 +98,15 @@
                             <label>Localidad</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.Localidad" class="form-control" />
-                            <span asp-validation-for="Pedido.Localidad" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.Localidad" class="form-control" />
+                                <span asp-validation-for="Pedido.Localidad" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input asp-for="Pedido.Localidad" readonly class="form-control" />
+                            }
                         </div>
                     </div>
                     <div class="row my-2">
@@ -71,8 +114,15 @@
                             <label>Provincia</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input asp-for="Pedido.Provincia" class="form-control" />
-                            <span asp-validation-for="Pedido.Provincia" class="text-danger"></span>
+                            @if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
+                            {
+                                <input asp-for="Pedido.Provincia" class="form-control" />
+                                <span asp-validation-for="Pedido.Provincia" class="text-danger"></span>
+                            }
+                            else
+                            {
+                                <input asp-for="Pedido.Provincia" readonly class="form-control" />
+                            }
                         </div>
                     </div>
                     <div class="row my-2">
@@ -95,6 +145,15 @@
                     </div>
                     <div class="row my-2">
                         <div class="col-12 col-md-2">
+                            <label>Estado del pago</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.EstadoPago" readonly class="form-control" />
+                            <span asp-validation-for="Pedido.EstadoPago" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
                             <label>Fecha de pago</label>
                         </div>
                         <div class="col-12 col-md-8">
@@ -102,6 +161,10 @@
                             <span asp-validation-for="Pedido.FechaPago" class="text-danger"></span>
                         </div>
                     </div>
+                    @if ((User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador)) && Model.Pedido.EstadoPedido != SD.EstadoCompletado)
+                    {
+                        <button asp-action="ActualizarDetalles" type="submit" class="btn btn-warning form-control my-1 text-white">Actualizar detalles de envio</button>
+                    }
                 </div>
                 <div class="col-5">
                     <h4 class="text-primaty d-block my-2">Detalles del pedido</h4>
@@ -112,7 +175,7 @@
                             <li class="list-group-item row">
                                 <div class="col-8">
                                     <h6 class="my-0 text-primary">@detalle.Producto.Nombre</h6>
-                                    @if(detalle.Producto.PrecioDescuento > 0)
+                                    @if (detalle.Producto.PrecioDescuento > 0)
                                     {
                                         <small class="text-muted">Precio : @detalle.Producto.PrecioDescuento.Value.ToString("c")</small>
                                     }
@@ -128,8 +191,21 @@
                             </li>
                         }
                     </ul>
-                    <input type="submit" class="btn btn-primary form-control my-1" value="Enviar Pedido" />
-                    <input type="submit" class="btn btn-primary form-control my-1" value="Reembolsar Pedido" />
+                    @if ((User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador)) && Model.Pedido.EstadoPedido != SD.EstadoCompletado)
+                    {
+                        if(Model.Pedido.EstadoPedido != SD.EstadoEnviado && Model.Pedido.EstadoPago == SD.EstadoPagoConcretado)
+                        {
+                            <button type="submit" asp-action="EnviarPedido" class="btn btn-primary form-control my-1">Enviar Pedido</button>
+                        }
+                        if (Model.Pedido.EstadoPago == SD.EstadoPagoConcretado)
+                        {
+                            <button asp-action="ReembolsarPedido" type="submit" class="btn btn-primary form-control my-1">Reembolsar Pedido</button>
+                        }
+                        if(Model.Pedido.EstadoPedido == SD.EstadoEnviado)
+                        {
+                            <button asp-action="FinalizarPedido" type="submit" class="btn btn-primary form-control my-1">Informar Pedido recibido</button>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -137,7 +213,7 @@
 </form>
 
 <style>
-    img{
+    img {
         height: 80px;
         width: 80px;
         object-fit: cover;

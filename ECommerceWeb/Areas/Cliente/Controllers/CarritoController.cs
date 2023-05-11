@@ -106,6 +106,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             }
 
             CarritoComprasVM.Pedido.EstadoPedido = SD.EstadoEnProceso;
+            CarritoComprasVM.Pedido.EstadoPago = SD.EstadoPagoPendiente;
 
             _unitOfWork.Pedido.Add(CarritoComprasVM.Pedido);
             _unitOfWork.Save();
@@ -149,6 +150,8 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             if(carritoDB.Cantidad <= 1)
             {
                 _unitOfWork.CarritoCompras.Remove(carritoDB);
+                var cantidad = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == carritoDB.IdUsuario).ToList().Count -1;
+                HttpContext.Session.SetInt32(SD.SesionCarroCompras, cantidad);
             }
             else
             {
@@ -164,6 +167,8 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             CarritoCompras carritoDB = _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
             _unitOfWork.CarritoCompras.Remove(carritoDB);
             _unitOfWork.Save();
+            var cantidad = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == carritoDB.IdUsuario).ToList().Count;
+            HttpContext.Session.SetInt32(SD.SesionCarroCompras, cantidad);
             return RedirectToAction(nameof(Index));
         }
 
