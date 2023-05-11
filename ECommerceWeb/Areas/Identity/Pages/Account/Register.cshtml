@@ -87,15 +87,16 @@
                         <div class="form-floating mb-3">
                             <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select"></select>
                         </div>
-                    </li>
-                    <li class="list-group-item mt-3">
                         <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrarse</button>
                     </li>
+@*                    <li class="list-group-item mt-3">
+                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrarse</button>
+                    </li>*@
                 </ul>
             </form>
         </div>
-        <div class="card-footer">
-@*            <h3>Registrarse con</h3>
+        <div class="card-footer mt-2">
+            <h3>Registrarse con</h3>
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
@@ -106,7 +107,7 @@
                 }
                 else
                 {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal text-center">
                         <div>
                             <p>
                                 @foreach (var provider in Model.ExternalLogins!)
@@ -117,7 +118,7 @@
                         </div>
                     </form>
                 }
-            }*@
+            }
         </div>
     </div>
 </div>

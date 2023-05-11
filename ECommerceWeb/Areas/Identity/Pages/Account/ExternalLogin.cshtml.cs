@@ -17,6 +17,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Web.Helpers;
+using ECommerceWeb.Models;
+using ECommerceWeb.Utility;
 
 namespace ECommerceWeb.Areas.Identity.Pages.Account
 {
@@ -84,6 +87,16 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+            [Required(ErrorMessage = "Este campo es obligatorio")]
+            public string Nombre { get; set; }
+
+            [Required(ErrorMessage = "Este campo es obligatorio")]
+            public string Apellido { get; set; }
+
+            public string? Direccion { get; set; }
+            public string? CodigoPostal { get; set; }
+            public string? Provincia { get; set; }
+            public string? Localidad { get; set; }
         }
         
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -131,7 +144,9 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
                 {
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        Nombre = info.Principal.FindFirstValue(ClaimTypes.Name),
+                        Apellido = info.Principal.FindFirstValue(ClaimTypes.Surname)
                     };
                 }
                 return Page();
@@ -155,10 +170,18 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                user.Nombre = Input.Nombre;
+                user.Apellido = Input.Apellido;
+                user.Direccion = Input.Direccion;
+                user.CodigoPostal = Input.CodigoPostal;
+                user.Localidad = Input.Localidad;
+                user.Provincia = Input.Provincia;
+
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, SD.RolCliente);
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
@@ -197,11 +220,11 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private Usuario CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<Usuario>();
             }
             catch
             {
