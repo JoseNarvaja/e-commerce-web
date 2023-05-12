@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Usuario>
+
+<div class="container-md mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center d-block">Listado de Usuarios</h2>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-primary mb-3" asp-area="Identity" asp-page="/Account/Register">Crear Usuario</a>
+            <table id="prodtable" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var usuario in Model)
+                    {
+                        <tr>
+                            <td>@usuario.Nombre</td>
+                            <td>@usuario.Apellido</td>
+                            <td>@usuario.Email</td>
+                            <td>@usuario.Rol</td>
+                            <td>
+                                @if(usuario.LockoutEnd > DateTime.Now)
+                                {
+                                    <a class="btn btn-danger m-1" asp-action="BloquearDesbloquear" asp-route-id="@usuario.Id"><i class="fa-solid fa-lock"></i> Bloqueado</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success m-1 d-block" asp-action="BloquearDesbloquear" asp-route-id="@usuario.Id"><i class="fa-solid fa-lock-open"></i> Desbloqueado</a>
+                                }
+                                <a class="btn btn-primary d-block m-1" asp-action="Permisos" asp-route-id="@usuario.Id"><i class="fa-regular fa-pen-to-square"></i> Permisos</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

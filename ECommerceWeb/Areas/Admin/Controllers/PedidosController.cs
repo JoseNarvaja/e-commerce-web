@@ -42,7 +42,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                 case "Completado":
                     pedidos = pedidos.Where(p => p.EstadoPedido == estado);
                     break;
-                case "EnProceso":
+                case "En Proceso":
                     pedidos = pedidos.Where(p => p.EstadoPedido == estado);
                     break;
                 case "Enviado":

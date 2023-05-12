@@ -128,9 +128,14 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
                 }
                 _unitOfWork.PedidoDetalle.Add(detalle);
             }
-            _unitOfWork.Save();
 
+            _unitOfWork.CarritoCompras.RemoveRange(CarritoComprasVM.Carritos);
+            HttpContext.Session.Clear();
+
+            _unitOfWork.Save();
             TempData["exito"] = "Pedido realizado con exito";
+
+
             return Redirect("/Cliente/Home/Index");
         }
 

@@ -1,0 +1,44 @@
+﻿@model ECommerceWeb.Models.ViewModels.PermisosVM
+
+<div class="container-md mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center m-3">Gestionar Rol de Usuario</h2>
+        </div>
+        <div class="card-body">
+            <form class="container-lg formulario" method="post" asp-action="Permisos">
+                <input hidden asp-for="Usuario.Id" />
+                <div class="col-10">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label asp-for="Usuario.Email"></label>
+                            <input asp-for="Usuario.Email" class="form-control border-0 shadow" readonly />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label asp-for="Usuario.Nombre"></label>
+                            <input asp-for="Usuario.Nombre" class="form-control border-0 shadow" readonly />
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="Usuario.Apellido"></label>
+                            <input asp-for="Usuario.Apellido" class="form-control border-0 shadow" readonly />
+                        </div>
+                    </div>
+                    <div class="py-2 col-12">
+                        <label>Rol</label>
+                        <select class="form-select" asp-for="Usuario.Rol" asp-items="@Model.Roles"></select>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6 col-md-3">
+                            <a asp-action="Index" class="btn btn-outline-primary border form-control">Volver al listado</a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <button type="submit" class="btn btn-primary form-control">Actualizar Rol</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
