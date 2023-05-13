@@ -1,10 +1,12 @@
 using ECommerceWeb.DataAccess.Data;
+using ECommerceWeb.DataAccess.DbInitializer;
 using ECommerceWeb.DataAccess.Repository;
 using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
 using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -49,6 +51,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 var app = builder.Build();
 
@@ -71,9 +74,19 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
+SeedDatabase();
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Cliente}/{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}

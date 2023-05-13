@@ -129,13 +129,6 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!_roleManager.RoleExistsAsync(SD.RolAdmin).GetAwaiter().GetResult())
-            {
-                _roleManager.CreateAsync(new IdentityRole(SD.RolAdmin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.RolModerador)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.RolCliente)).GetAwaiter().GetResult();
-            }
-
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 

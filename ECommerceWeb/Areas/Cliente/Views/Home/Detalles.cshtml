@@ -5,7 +5,7 @@
     <input hidden asp-for="IdProducto" />
     <div class="card container p-2 mt-3 rounded">
         <div class="card-header p-3">
-            <span class="badge bg-info p-2 mt-3 mb-3 mr-4">@Model.Producto.Categoria.Nombre</span>
+            <span class="badge bg-info p-2 mt-3 mb-3 mr-4 text-white">@Model.Producto.Categoria.Nombre</span>
             <div class="block">
                 <img src="@Model.Producto.URLImagen" class="float-left imagen-producto rounded" />
                 <div class="contenido-principal">
@@ -29,8 +29,8 @@
                         <input type="number" min="1" max="1000" asp-for="Cantidad" class="form-control" />
                     </div>
                     <div class="d-flex justify-content-around mt-3">
-                        <button type="submit" class="btn btn-dark form-control m-3 p-2">Añadir al carrito</button>
-                        <a class="btn btn-dark form-control m-3 p-2">Comprar ahora</a>
+                        <button type="submit" class="btn btn-primary form-control m-3 p-2">Añadir al carrito</button>
+                        <a class="btn btn-primary form-control m-3 p-2">Comprar ahora</a>
                     </div>
                 </div>
             </div>

@@ -87,7 +87,8 @@
                         @if (User.IsInRole(SD.RolAdmin))
                         {
                             <div class="form-floating mb-3">
-                                <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select"></select>
+                                <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select form-control"></select>
+                                <label asp-for="Input.Role">Rol</label>
                             </div>
                         }
                         <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrarse</button>

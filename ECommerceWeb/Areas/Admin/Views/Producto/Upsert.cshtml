@@ -48,8 +48,8 @@
                             <input type="file" id="URLImagen" name="file" class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label asp-for="Producto.IdCategoria"></label>
-                            <select asp-for="Producto.IdCategoria" asp-items="@Model.Categorias" class="form-select">
+                            <label class="d-block" asp-for="Producto.IdCategoria"></label>
+                            <select asp-for="Producto.IdCategoria" asp-items="@Model.Categorias" class="form-select form-control">
                                 <option disabled selected>Seleccione una categoria</option>
                             </select>
                             <span asp-validation-for="Producto.IdCategoria" class="text-danger"></span>
