@@ -3,6 +3,7 @@ using ECommerceWeb.Models;
 using ECommerceWeb.Models.ViewModels;
 using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -13,12 +14,14 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
     public class CarritoController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IEmailSender _emailSender;
         [BindProperty]
         public CarritoComprasVM CarritoComprasVM { get; set; }
 
-        public CarritoController(IUnitOfWork unitOfWork)
+        public CarritoController(IUnitOfWork unitOfWork, IEmailSender emailSender)
         {
             _unitOfWork = unitOfWork;
+            _emailSender= emailSender;
         }
         public IActionResult Index()
         {
@@ -88,7 +91,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            CarritoComprasVM.Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Producto");
+            CarritoComprasVM.Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Producto,Usuario");
 
             CarritoComprasVM.Pedido.FechaPedido = System.DateTime.Now;
             CarritoComprasVM.Pedido.IdUsuario = idUsuario;
@@ -128,7 +131,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
                 }
                 _unitOfWork.PedidoDetalle.Add(detalle);
             }
-
+            _emailSender.SendEmailAsync(CarritoComprasVM.Pedido.Usuario.Email, "Pedido realizado - ecommerce web", "<p>Se ha registrado su pedido con id: "+ CarritoComprasVM.Pedido.IdPedido +"</p>");
             _unitOfWork.CarritoCompras.RemoveRange(CarritoComprasVM.Carritos);
             HttpContext.Session.Clear();
 
