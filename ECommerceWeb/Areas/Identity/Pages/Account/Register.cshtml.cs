@@ -15,6 +15,7 @@ using ECommerceWeb.Models;
 using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,7 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostEnviroment;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -44,7 +46,8 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             RoleManager<IdentityRole> roleManager,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            IWebHostEnvironment hostEnviroment)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -54,6 +57,7 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
             _emailSender = emailSender;
             _roleManager = roleManager;
             _unitOfWork = unitOfWork;
+            _hostEnviroment = hostEnviroment;
         }
 
         /// <summary>
@@ -176,14 +180,27 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
+                    string callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    string pathTemplate = _hostEnviroment.WebRootPath + Path.DirectorySeparatorChar.ToString()
+                        + "Templates" + Path.DirectorySeparatorChar.ToString() + "ConfirmacionCorreo.html";
+
+                    var htmlBody = "";
+                    using(StreamReader streamReader = System.IO.File.OpenText(pathTemplate))
+                    {
+                        htmlBody = streamReader.ReadToEnd();
+                    }
+                    //HtmlEncoder.Default.Encode(callbackUrl)
+                    string messageBody = string.Format(htmlBody,
+                        HtmlEncoder.Default.Encode(callbackUrl));
+
+
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirme su correo", messageBody);
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

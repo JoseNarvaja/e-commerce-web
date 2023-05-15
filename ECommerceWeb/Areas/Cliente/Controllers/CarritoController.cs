@@ -5,7 +5,9 @@ using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
+using System.Text.Encodings.Web;
 
 namespace ECommerceWeb.Areas.Cliente.Controllers
 {
@@ -15,13 +17,15 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailSender _emailSender;
+        private readonly IWebHostEnvironment _webHost;
         [BindProperty]
         public CarritoComprasVM CarritoComprasVM { get; set; }
 
-        public CarritoController(IUnitOfWork unitOfWork, IEmailSender emailSender)
+        public CarritoController(IUnitOfWork unitOfWork, IEmailSender emailSender, IWebHostEnvironment webHost)
         {
             _unitOfWork = unitOfWork;
-            _emailSender= emailSender;
+            _emailSender = emailSender;
+            _webHost = webHost;
         }
         public IActionResult Index()
         {
@@ -131,13 +135,34 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
                 }
                 _unitOfWork.PedidoDetalle.Add(detalle);
             }
-            _emailSender.SendEmailAsync(CarritoComprasVM.Pedido.Usuario.Email, "Pedido realizado - ecommerce web", "<p>Se ha registrado su pedido con id: "+ CarritoComprasVM.Pedido.IdPedido +"</p>");
+
+            string pathTemplate = _webHost.WebRootPath + Path.DirectorySeparatorChar.ToString()
+                        + "Templates" + Path.DirectorySeparatorChar.ToString() + "ConfirmacionPedido.html";
+
+            
             _unitOfWork.CarritoCompras.RemoveRange(CarritoComprasVM.Carritos);
             HttpContext.Session.Clear();
 
             _unitOfWork.Save();
             TempData["exito"] = "Pedido realizado con exito";
 
+            var htmlBody = "";
+            using (StreamReader streamReader = System.IO.File.OpenText(pathTemplate))
+            {
+                htmlBody = streamReader.ReadToEnd();
+            }
+            //HtmlEncoder.Default.Encode(callbackUrl)
+            string messageBody = string.Format(htmlBody,
+                CarritoComprasVM.Pedido.IdPedido,
+                CarritoComprasVM.Pedido.TotalPedido,
+                CarritoComprasVM.Pedido.Direccion,
+                CarritoComprasVM.Pedido.Localidad,
+                CarritoComprasVM.Pedido.Provincia,
+                CarritoComprasVM.Pedido.EstadoPedido);
+
+
+
+            _emailSender.SendEmailAsync(CarritoComprasVM.Pedido.Usuario.Email, "Pedido realizado - ecommerce web", messageBody);
 
             return Redirect("/Cliente/Home/Index");
         }
