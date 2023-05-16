@@ -24,11 +24,17 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
-builder.Services.AddAuthentication().AddFacebook(option =>
-{
-    option.AppId = "6322623471113728";
-    option.AppSecret = "59bed15ff47d4923fd543fa5a95b64fa";
-});
+builder.Services.AddAuthentication()
+    .AddFacebook(option =>
+        {
+        option.AppId = "6322623471113728";
+        option.AppSecret = "59bed15ff47d4923fd543fa5a95b64fa";
+        })
+    .AddMicrosoftAccount(microsoftOptions =>
+    {
+        microsoftOptions.ClientId = "e1dc3865-61be-4fde-892a-3a0f014a3444";
+        microsoftOptions.ClientSecret = "5z08Q~W5uE0sqd6~EwBJzHFqvHO4vQKNxvAblb0b";
+    }); ;
 
 
 builder.Services.AddSession(options =>
