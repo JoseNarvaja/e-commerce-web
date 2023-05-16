@@ -197,6 +197,7 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
                     }
                     //HtmlEncoder.Default.Encode(callbackUrl)
                     string messageBody = string.Format(htmlBody,
+                        Input.Nombre,
                         HtmlEncoder.Default.Encode(callbackUrl));
 
 
@@ -204,6 +205,7 @@ namespace ECommerceWeb.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
+                        TempData["exito"] = "Nuevo usuario creado exitosamente";
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else
