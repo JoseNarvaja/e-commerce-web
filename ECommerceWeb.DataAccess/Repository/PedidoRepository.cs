@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using ECommerceWeb.Models;
 using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.DataAccess.Data;
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceWeb.DataAccess.Repository
 {
@@ -24,15 +26,15 @@ namespace ECommerceWeb.DataAccess.Repository
             _contexto.Pedido.Update(pedido);
         }
 
-        public void UpdateEstado(Pedido pedido, string estado)
+        public async Task UpdateEstado(Pedido pedido, string estado)
         {
-            var pedidoDb = _contexto.Pedido.FirstOrDefault(u=> u.IdPedido== pedido.IdPedido);
+            var pedidoDb = await _contexto.Pedido.FirstOrDefaultAsync(u=> u.IdPedido== pedido.IdPedido);
             pedidoDb.EstadoPedido = estado;
         }
 
-        public void UpdateEstadoPago(Pedido pedido, string estado)
+        public async Task UpdateEstadoPago(Pedido pedido, string estado)
         {
-            var pedidoDb = _contexto.Pedido.FirstOrDefault(u => u.IdPedido == pedido.IdPedido);
+            var pedidoDb = await _contexto.Pedido.FirstOrDefaultAsync(u => u.IdPedido == pedido.IdPedido);
             pedidoDb.EstadoPago = estado;
         }
     }

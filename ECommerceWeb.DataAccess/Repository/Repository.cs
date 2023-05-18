@@ -22,12 +22,12 @@ namespace ECommerceWeb.DataAccess.Repository
             dbSet = _context.Set<T>();
         }
 
-        public void Add(T entity)
+        public async Task Add(T entity)
         {
-            _context.Add(entity);
+            await _context.AddAsync(entity);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter, string? includeProperties = null)
+        public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>>? filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             if(filter != null)
@@ -41,10 +41,10 @@ namespace ECommerceWeb.DataAccess.Repository
                     query = query.Include(prop);
                 }
             }
-            return query.ToList();
+            return await query.ToListAsync();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true)
+        public async Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true)
         {
             IQueryable<T> query;
             if (tracked)
@@ -64,7 +64,7 @@ namespace ECommerceWeb.DataAccess.Repository
                     query = query.Include(prop);
                 }
             }
-            return query.FirstOrDefault();
+            return await query.FirstOrDefaultAsync();
         }
 
         public void Remove(T entity)

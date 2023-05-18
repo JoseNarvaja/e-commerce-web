@@ -9,11 +9,11 @@ namespace ECommerceWeb.DataAccess.Repository.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        void Add(T entity);
+        Task Add(T entity);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
-        IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null);
-        T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true);
+        Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null);
+        Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true);
 
     }
 }

@@ -34,9 +34,9 @@ namespace ECommerceWeb.DataAccess.Repository
 
         public IPedidoDetalleRepository PedidoDetalle { get; private set; }
 
-        public void Save()
+        public async Task Save()
         {
-            _contexto.SaveChanges();
+            await _contexto.SaveChangesAsync();
         }
     }
 }

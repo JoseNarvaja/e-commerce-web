@@ -19,17 +19,17 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Categoria> categorias = await Task.Run( () => { return _unitOfWork.Categoria.GetAll(); });
+            IEnumerable<Categoria> categorias = await _unitOfWork.Categoria.GetAll();
             return View(categorias);
         }
 
         [HttpGet]
-        public IActionResult Upsert(int? id)
+        public async Task<IActionResult> Upsert(int? id)
         {
             Categoria categoria = new Categoria();
             if(id != null | id > 0)
             {
-                categoria = _unitOfWork.Categoria.GetFirstOrDefault((u => u.IdCategoria == id));
+                categoria = await _unitOfWork.Categoria.GetFirstOrDefault((u => u.IdCategoria == id));
             }
             return View(categoria);
         }
@@ -37,24 +37,24 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
 
         [HttpGet("/Admin/Categoria/Delete/{id:int?}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            Categoria categoria = _unitOfWork.Categoria.GetFirstOrDefault(u => u.IdCategoria == id);
+            Categoria categoria = await _unitOfWork.Categoria.GetFirstOrDefault(u => u.IdCategoria == id);
 
-            IEnumerable<Producto> productosAsociados = _unitOfWork.Producto.GetAll(u => u.IdCategoria == id);
+            IEnumerable<Producto> productosAsociados = await _unitOfWork.Producto.GetAll(u => u.IdCategoria == id);
             if(productosAsociados.Count() >= 1)
             {
                 TempData["error"] = "No se puede eliminar una categoria si tiene productos asociados";
                 return RedirectToAction("Index");
             }
             _unitOfWork.Categoria.Remove(categoria);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Categoria categoria)
+        public async Task<IActionResult> Upsert(Categoria categoria)
         {
             if(ModelState.IsValid)
             {
@@ -65,10 +65,10 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                 }
                 else
                 {
-                    _unitOfWork.Categoria.Add(categoria);
+                    await _unitOfWork.Categoria.Add(categoria);
                     TempData["exito"] = "Categoria agregada con exito";
                 }
-                _unitOfWork.Save();
+                await _unitOfWork.Save();
                 return RedirectToAction("Index");
                 
             }

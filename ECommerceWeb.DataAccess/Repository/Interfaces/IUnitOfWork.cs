@@ -15,6 +15,6 @@ namespace ECommerceWeb.DataAccess.Repository.Interfaces
         public IPedidoRepository Pedido { get; }
         public IPedidoDetalleRepository PedidoDetalle { get; }
 
-        void Save();
+        Task Save();
     }
 }

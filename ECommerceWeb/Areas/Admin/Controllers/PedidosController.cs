@@ -20,21 +20,21 @@ namespace ECommerceWeb.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index(string estado)
+        public async Task<IActionResult> Index(string estado)
         {
             IEnumerable<Pedido> pedidos;
 
 
             if (User.IsInRole(SD.RolAdmin) || User.IsInRole(SD.RolModerador))
             {
-                pedidos = _unitOfWork.Pedido.GetAll();
+                pedidos = await _unitOfWork.Pedido.GetAll();
             }
             else
             {
                 var claimsIdentity = (ClaimsIdentity)User.Identity;
                 var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                pedidos = _unitOfWork.Pedido.GetAll(p => p.IdUsuario == idUsuario);
+                pedidos = await _unitOfWork.Pedido.GetAll(p => p.IdUsuario == idUsuario);
             }
 
             switch (estado)
@@ -58,12 +58,12 @@ namespace ECommerceWeb.Areas.Admin.Controllers
             return View(pedidos);
         }
 
-        public IActionResult Detalles(int id)
+        public async Task<IActionResult> Detalles(int id)
         {
             PedidoVM pedidoVM = new PedidoVM()
             {
-                Pedido = _unitOfWork.Pedido.GetFirstOrDefault(p => p.IdPedido == id),
-                Detalles = _unitOfWork.PedidoDetalle.GetAll(d => d.IdPedido == id, includeProperties: "Producto")
+                Pedido = await _unitOfWork.Pedido.GetFirstOrDefault(p => p.IdPedido == id),
+                Detalles = await _unitOfWork.PedidoDetalle.GetAll(d => d.IdPedido == id, includeProperties: "Producto")
             };
 
             return View(pedidoVM);
@@ -71,9 +71,9 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
         [Authorize(Roles = SD.RolModerador + "," + SD.RolAdmin)]
         [HttpPost]
-        public IActionResult ActualizarDetalles(PedidoVM pedidoVM)
+        public async Task<IActionResult> ActualizarDetalles(PedidoVM pedidoVM)
         {
-            Pedido pedidoDB = _unitOfWork.Pedido.GetFirstOrDefault(p => p.IdPedido == pedidoVM.Pedido.IdPedido);
+            Pedido pedidoDB = await _unitOfWork.Pedido.GetFirstOrDefault(p => p.IdPedido == pedidoVM.Pedido.IdPedido);
             pedidoDB.Nombre = pedidoVM.Pedido.Nombre;
             pedidoDB.Apellido = pedidoVM.Pedido.Apellido;
             pedidoDB.Telefono = pedidoVM.Pedido.Telefono;
@@ -83,7 +83,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
             pedidoDB.Provincia = pedidoVM.Pedido.Provincia;
 
             _unitOfWork.Pedido.Update(pedidoDB);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
 
             TempData["exito"] = "Detalles de envio actualizados";
             return RedirectToAction(nameof(Detalles), new { id = pedidoDB.IdPedido });
@@ -91,20 +91,20 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
         [Authorize(Roles = SD.RolModerador + "," + SD.RolAdmin)]
         [HttpPost]
-        public IActionResult EnviarPedido(PedidoVM pedidoVM)
+        public async Task<IActionResult> EnviarPedido(PedidoVM pedidoVM)
         {
-            _unitOfWork.Pedido.UpdateEstado(pedidoVM.Pedido, SD.EstadoEnviado);
-            _unitOfWork.Save();
+            await _unitOfWork.Pedido.UpdateEstado(pedidoVM.Pedido, SD.EstadoEnviado);
+            await _unitOfWork.Save();
             TempData["exito"] = "Estado de pedido actualizado";
             return RedirectToAction(nameof(Detalles), new { id = pedidoVM.Pedido.IdPedido });
         }
 
         [Authorize(Roles = SD.RolModerador + "," + SD.RolAdmin)]
         [HttpPost]
-        public IActionResult FinalizarPedido(PedidoVM pedidoVM)
+        public async Task<IActionResult> FinalizarPedido(PedidoVM pedidoVM)
         {
-            _unitOfWork.Pedido.UpdateEstado(pedidoVM.Pedido, SD.EstadoCompletado);
-            _unitOfWork.Save();
+            await _unitOfWork.Pedido.UpdateEstado(pedidoVM.Pedido, SD.EstadoCompletado);
+            await _unitOfWork.Save();
             TempData["exito"] = "Estado de pedido actualizado";
             return RedirectToAction(nameof(Detalles), new { id = pedidoVM.Pedido.IdPedido });
         }

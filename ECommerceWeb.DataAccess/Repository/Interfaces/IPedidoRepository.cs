@@ -10,7 +10,7 @@ namespace ECommerceWeb.DataAccess.Repository.Interfaces
     public interface IPedidoRepository :IRepository<Pedido>
     {
         void Update(Pedido pedido);
-        void UpdateEstado(Pedido pedido, string estado);
-        void UpdateEstadoPago(Pedido pedido, string estado);
+        Task UpdateEstado(Pedido pedido, string estado);
+        Task UpdateEstadoPago(Pedido pedido, string estado);
     }
 }

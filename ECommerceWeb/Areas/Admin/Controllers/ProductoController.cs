@@ -26,17 +26,17 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Producto> productos = await Task.Run(() => { return _unitOfWork.Producto.GetAll(includeProperties:"Categoria"); });
+            IEnumerable<Producto> productos = await _unitOfWork.Producto.GetAll(includeProperties:"Categoria");
             return View(productos);
         }
 
         [HttpGet]
-        public IActionResult Upsert(int? id)
+        public async Task<IActionResult> Upsert(int? id)
         {
             var productoVM = new ProductoVM()
             {
                 Producto = new Producto(),
-                Categorias = _unitOfWork.Categoria.GetAll().Select(u => new SelectListItem
+                Categorias = (await _unitOfWork.Categoria.GetAll()).Select(u => new SelectListItem
                 {
                     Text = u.Nombre,
                     Value = u.IdCategoria.ToString()
@@ -45,15 +45,14 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
             if(id != null & id != 0)
             {
-                productoVM.Producto = _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto == id);
+                productoVM.Producto = await _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto == id);
             }
             return View(productoVM);
-
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductoVM productoVM, IFormFile? file)
+        public async Task<IActionResult> Upsert(ProductoVM productoVM, IFormFile? file)
         {
             if(productoVM.Producto.PrecioDescuento > productoVM.Producto.Precio)
             {
@@ -96,7 +95,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                 }
                if(productoVM.Producto.IdProducto == 0)
                 {
-                    _unitOfWork.Producto.Add(productoVM.Producto);
+                    await _unitOfWork.Producto.Add(productoVM.Producto);
                     TempData["exito"] = "Producto creado con éxito";
                 }
                 else
@@ -104,11 +103,11 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                     _unitOfWork.Producto.Update(productoVM.Producto);
                     TempData["exito"] = "Producto actualizado con éxito";
                 }
-                _unitOfWork.Save();
+                await _unitOfWork.Save();
                return RedirectToAction("Index");
             }
 
-            productoVM.Categorias = _unitOfWork.Categoria.GetAll().Select(u => new SelectListItem
+            productoVM.Categorias = (await _unitOfWork.Categoria.GetAll()).Select(u => new SelectListItem
             {
                 Text = u.Nombre,
                 Value = u.IdCategoria.ToString()
@@ -117,9 +116,9 @@ namespace ECommerceWeb.Areas.Admin.Controllers
         }
 
         [HttpGet("/Admin/Producto/Delete/{id:int?}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var producto = _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto == id);
+            var producto = await _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto == id);
             if(producto == null)
             {
                 TempData["error"] = "No se pudo borrar el producto";
@@ -132,7 +131,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                 System.IO.File.Delete(imagenProducto);
             }
             _unitOfWork.Producto.Remove(producto);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
 
             return RedirectToAction("Index");
         }

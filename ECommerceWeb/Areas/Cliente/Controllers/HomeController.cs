@@ -19,17 +19,17 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IEnumerable<Producto> productos = _unitOfWork.Producto.GetAll(includeProperties:"Categoria");
+            IEnumerable<Producto> productos = await _unitOfWork.Producto.GetAll(includeProperties:"Categoria");
             return View(productos);
         }
 
-        public IActionResult Detalles(int id)
+        public async Task<IActionResult> Detalles(int id)
         {
             CarritoCompras carrito = new CarritoCompras()
             {
-                Producto = _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto== id, includeProperties:"Categoria"),
+                Producto = await _unitOfWork.Producto.GetFirstOrDefault(u => u.IdProducto== id, includeProperties:"Categoria"),
                 Cantidad = 1,
                 IdProducto = id
             };
@@ -38,26 +38,26 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Detalles(CarritoCompras carrito)
+        public async Task<IActionResult> Detalles(CarritoCompras carrito)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             carrito.IdUsuario = idUsuario;
 
-            CarritoCompras carritoDeDB = _unitOfWork.CarritoCompras.GetFirstOrDefault(u=> u.IdUsuario == idUsuario && u.IdProducto == carrito.IdProducto);
+            CarritoCompras carritoDeDB = await _unitOfWork.CarritoCompras.GetFirstOrDefault(u=> u.IdUsuario == idUsuario && u.IdProducto == carrito.IdProducto);
 
             if(carritoDeDB != null)
             {
                 carritoDeDB.Cantidad += carrito.Cantidad;
                 _unitOfWork.CarritoCompras.Update(carritoDeDB);
-                _unitOfWork.Save();
+                await _unitOfWork.Save();
             }
             else
             {
-                _unitOfWork.CarritoCompras.Add(carrito);
-                _unitOfWork.Save();
+                await _unitOfWork.CarritoCompras.Add(carrito);
+                await _unitOfWork.Save();
                 HttpContext.Session.SetInt32(SD.SesionCarroCompras,
-                    _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario).Count());
+                    (await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario)).Count());
             }
 
             TempData["exito"] = "Carrito actualizado con exito";

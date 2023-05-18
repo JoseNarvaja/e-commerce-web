@@ -24,7 +24,7 @@ namespace ECommerceWeb.ViewComponents
                 if(HttpContext.Session.GetInt32(SD.SesionCarroCompras) == null)
                 {
                     HttpContext.Session.SetInt32(SD.SesionCarroCompras,
-                    _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == claim.Value).Count());
+                    (await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == claim.Value)).Count());
                 }
                 
                 return View(HttpContext.Session.GetInt32(SD.SesionCarroCompras));

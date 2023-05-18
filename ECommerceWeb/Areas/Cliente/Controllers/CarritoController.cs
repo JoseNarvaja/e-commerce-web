@@ -27,7 +27,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             _emailSender = emailSender;
             _webHost = webHost;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -35,7 +35,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
             CarritoComprasVM = new CarritoComprasVM()
             {
-                Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto"),
+                Carritos = await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto"),
                 Pedido = new()
             };
 
@@ -54,18 +54,18 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             return View(CarritoComprasVM);
         }
 
-        public IActionResult Resumen()
+        public async Task<IActionResult> Resumen()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             CarritoComprasVM = new CarritoComprasVM()
             {
-                Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto"),
+                Carritos = await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Usuario,Producto"),
                 Pedido = new()
             };
 
-            CarritoComprasVM.Pedido.Usuario = _unitOfWork.Usuario.GetFirstOrDefault(u => u.Id == idUsuario);
+            CarritoComprasVM.Pedido.Usuario = await _unitOfWork.Usuario.GetFirstOrDefault(u => u.Id == idUsuario);
 
             CarritoComprasVM.Pedido.Nombre = CarritoComprasVM.Pedido.Usuario.Nombre;
             CarritoComprasVM.Pedido.Apellido = CarritoComprasVM.Pedido.Usuario.Apellido;
@@ -90,12 +90,12 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
         [HttpPost]
         [ActionName("Resumen")]
-        public IActionResult ResumenPOST(CarritoComprasVM carritoComprasVM)
+        public async Task<IActionResult> ResumenPOST(CarritoComprasVM carritoComprasVM)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var idUsuario = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            CarritoComprasVM.Carritos = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Producto,Usuario");
+            CarritoComprasVM.Carritos = await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == idUsuario, includeProperties: "Producto,Usuario");
 
             CarritoComprasVM.Pedido.FechaPedido = System.DateTime.Now;
             CarritoComprasVM.Pedido.IdUsuario = idUsuario;
@@ -115,8 +115,8 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             CarritoComprasVM.Pedido.EstadoPedido = SD.EstadoEnProceso;
             CarritoComprasVM.Pedido.EstadoPago = SD.EstadoPagoPendiente;
 
-            _unitOfWork.Pedido.Add(CarritoComprasVM.Pedido);
-            _unitOfWork.Save();
+            await _unitOfWork.Pedido.Add(CarritoComprasVM.Pedido);
+            await _unitOfWork.Save();
 
             foreach (var carro in CarritoComprasVM.Carritos)
             {
@@ -133,7 +133,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
                 {
                     detalle.PrecioIndividual = carro.Producto.Precio;
                 }
-                _unitOfWork.PedidoDetalle.Add(detalle);
+                await _unitOfWork.PedidoDetalle.Add(detalle);
             }
 
             string pathTemplate = _webHost.WebRootPath + Path.DirectorySeparatorChar.ToString()
@@ -143,7 +143,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             _unitOfWork.CarritoCompras.RemoveRange(CarritoComprasVM.Carritos);
             HttpContext.Session.Clear();
 
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
             TempData["exito"] = "Pedido realizado con exito";
 
             var htmlBody = "";
@@ -162,28 +162,28 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
 
 
-            _emailSender.SendEmailAsync(CarritoComprasVM.Pedido.Usuario.Email, "Pedido realizado - ecommerce web", messageBody);
+            await _emailSender.SendEmailAsync(CarritoComprasVM.Pedido.Usuario.Email, "Pedido realizado - ecommerce web", messageBody);
 
             return Redirect("/Cliente/Home/Index");
         }
 
 
-        public IActionResult Sumar(int id)
+        public async Task<IActionResult> Sumar(int id)
         {
-            CarritoCompras carritoDB = _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
+            CarritoCompras carritoDB = await _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
             carritoDB.Cantidad += 1;
             _unitOfWork.CarritoCompras.Update(carritoDB);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Restar(int id)
+        public async Task<IActionResult> Restar(int id)
         {
-            CarritoCompras carritoDB = _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
+            CarritoCompras carritoDB = await _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
             if(carritoDB.Cantidad <= 1)
             {
                 _unitOfWork.CarritoCompras.Remove(carritoDB);
-                var cantidad = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == carritoDB.IdUsuario).ToList().Count -1;
+                var cantidad = (await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == carritoDB.IdUsuario)).ToList().Count -1;
                 HttpContext.Session.SetInt32(SD.SesionCarroCompras, cantidad);
             }
             else
@@ -191,16 +191,16 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
                 carritoDB.Cantidad -= 1;
                 _unitOfWork.CarritoCompras.Update(carritoDB);
             }
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Borrar(int id)
+        public async Task<IActionResult> Borrar(int id)
         {
-            CarritoCompras carritoDB = _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
+            CarritoCompras carritoDB = await _unitOfWork.CarritoCompras.GetFirstOrDefault(c => c.IdCarritoCompra == id);
             _unitOfWork.CarritoCompras.Remove(carritoDB);
-            _unitOfWork.Save();
-            var cantidad = _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == carritoDB.IdUsuario).ToList().Count;
+            await _unitOfWork.Save();
+            var cantidad = (await _unitOfWork.CarritoCompras.GetAll(c => c.IdUsuario == carritoDB.IdUsuario)).ToList().Count;
             HttpContext.Session.SetInt32(SD.SesionCarroCompras, cantidad);
             return RedirectToAction(nameof(Index));
         }

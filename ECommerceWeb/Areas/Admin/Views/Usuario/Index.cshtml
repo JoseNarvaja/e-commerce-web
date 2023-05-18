@@ -28,7 +28,7 @@
                             <td>
                                 @if(usuario.LockoutEnd > DateTime.Now)
                                 {
-                                    <a class="btn btn-danger m-1" asp-action="BloquearDesbloquear" asp-route-id="@usuario.Id"><i class="fa-solid fa-lock"></i> Bloqueado</a>
+                                    <a class="btn btn-danger m-1 d-block" asp-action="BloquearDesbloquear" asp-route-id="@usuario.Id"><i class="fa-solid fa-lock"></i> Bloqueado</a>
                                 }
                                 else
                                 {
