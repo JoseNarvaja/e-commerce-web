@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Carousel>
+
+<div class="container-md mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center d-block">Listado de imágenes para carousel</h2>
+        </div>
+        <div class="card-body">
+            <div class="row p-2 my-4 border">
+                <div class="col-10">
+                    <img class="rounded" max-heigth="200px" src="~/images/carousel/Primera.webp" />
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-primary py-2 px-3 mt-5" asp-action="UpsertCarousel" asp-route-nombre="Primera">Editar</a>
+                </div>  
+            </div>
+            <div class="row p-2 my-4 border">
+                <div class="col-10">
+                    <img class="rounded" max-heigth="200px" src="~/images/carousel/Segunda.webp" />
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-primary py-2 px-3 mt-5" asp-action="UpsertCarousel" asp-route-nombre="Segunda">Editar</a>
+                </div>  
+            </div>
+            <div class="row p-2 my-4 border">
+                <div class="col-10">
+                    <img class="rounded" max-heigth="200px" src="~/images/carousel/Tercera.webp" />
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-primary py-2 px-3 mt-5" asp-action="UpsertCarousel" asp-route-nombre="Tercera">Editar</a>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    img{
+        max-height: 500px;
+    }
+</style>

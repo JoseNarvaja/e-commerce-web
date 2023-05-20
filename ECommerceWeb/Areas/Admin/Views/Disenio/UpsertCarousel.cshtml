@@ -1,0 +1,44 @@
+﻿@model Carousel
+@{
+    string pathImagen = "/images/carousel/" + Model.Nombre + ".webp";
+}
+
+<div class="container-md mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center d-block">Editar contenido de carousel</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 col-4">
+                    <img class="img-thumbnail" max-heigth="200px" src="@pathImagen" />
+                </div>
+                <div class="col-md-6 col-8">
+                    <form method="post" asp-action="UpsertCarousel" enctype="multipart/form-data">
+                        <input hidden asp-for="Id" />
+                        <input hidden asp-for="Nombre" />
+                        <div class="col-12 mb-3">
+                            <label asp-for="Titulo"></label>
+                            <input asp-for="Titulo" class="form-control" placeholder="Nombre del producto" />
+                            <span asp-validation-for="Titulo" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label asp-for="Descripcion"></label>
+                            <textarea asp-for="Descripcion" class="form-control" rows="2" placeholder="Descripcion"></textarea>
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Imagen</label>
+                            <input type="file" id="imagen" name="imagen" class="form-control" />
+                        </div>
+                        <div class="col">
+                             <button type="submit" class="btn btn-primary">Actualizar Carousel</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

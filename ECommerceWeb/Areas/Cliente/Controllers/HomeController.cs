@@ -1,6 +1,7 @@
 ﻿using ECommerceWeb.DataAccess.Repository;
 using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
+using ECommerceWeb.Models.ViewModels;
 using ECommerceWeb.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,8 +22,12 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Producto> productos = await _unitOfWork.Producto.GetAll(includeProperties:"Categoria");
-            return View(productos);
+            HomeVM homeVM = new HomeVM()
+            {
+                Productos = await _unitOfWork.Producto.GetAll(includeProperties: "Categoria"),
+                CarouselImagenes = await _unitOfWork.Carousel.GetAll()
+            };
+            return View(homeVM);
         }
 
         public async Task<IActionResult> Detalles(int id)

@@ -1,8 +1,51 @@
-﻿@model IEnumerable<Producto>
+﻿@model HomeVM
+@{
+    Carousel primera = Model.CarouselImagenes.FirstOrDefault(c => c.Nombre == "Primera");
+    Carousel segunda = Model.CarouselImagenes.FirstOrDefault(c => c.Nombre == "Segunda");
+    Carousel Tercera = Model.CarouselImagenes.FirstOrDefault(c => c.Nombre == "Tercera");
+}
 
 <link rel="stylesheet" href="~/css/homeIndex.css" />
-<section class="container d-flex flex-wrap">
-    @foreach (var producto in Model)
+<div id="carouselExampleCaptions" class="carousel slide container-md rounded mt-3" data-bs-ride="false">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/images/carousel/Primera.webp" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>@primera.Titulo</h5>
+                <p>@primera.Descripcion</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/carousel/Segunda.webp" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>@segunda.Titulo</h5>
+                <p>@segunda.Descripcion</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/carousel/Tercera.webp" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>@Tercera.Titulo</h5>
+                <p>@Tercera.Descripcion</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<section class="container d-flex flex-wrap mt-3">
+    @foreach (var producto in Model.Productos)
     {
         <article class="card col-2 m-2 rounded p-2" height="500px">
             <img src="@producto.URLImagen" class="card-img-top">
