@@ -22,35 +22,39 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item mx-1">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-1">
 
-                            <a class="nav-link" asp-area="Cliente" asp-controller="Carrito" asp-action="Index">
-                                @await Component.InvokeAsync("CarroCompras")
+                        <a class="nav-link" asp-area="Cliente" asp-controller="Carrito" asp-action="Index">
+                            @await Component.InvokeAsync("CarroCompras")
+                        </a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Pedidos" asp-action="Index">Gestionar Pedidos</a>
+                    </li>
+                    @if (User.IsInRole(SD.RolAdmin))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Gestion de contenido
                             </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Producto" asp-action="Index">Productos</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Categoria" asp-action="Index">Categorias</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Crear Usuario</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Usuario" asp-action="Index">Gestionar Usuarios</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Disenio" asp-action="CarouselIndex">Gestionar Carousel</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item mx-1">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Pedidos" asp-action="Index">Gestionar Pedidos</a>
-                        </li>
-                        @if (User.IsInRole(SD.RolAdmin))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Gestion de contenido
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Producto" asp-action="Index">Productos</a></li>
-                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Categoria" asp-action="Index">Categorias</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Crear Usuario</a></li>
-                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Usuario" asp-action="Index">Gestionar Usuarios</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Disenio" asp-action="CarouselIndex">Gestionar Carousel</a></li>
-                                </ul>
-                            </li>
-                        }
-                    </ul>
-                    <partial name="_LoginPartial"></partial>
+                    }
+                    <form method="get" class="d-flex nav-item justify-content-center" asp-action="Buscar" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" name="producto" aria-label="Search">
+                        <button class="btn btn-outline-light px-3" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </ul>
+                <partial name="_LoginPartial"></partial>
             </div>
         </div>
     </nav>

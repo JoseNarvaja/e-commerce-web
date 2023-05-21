@@ -24,7 +24,10 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
         {
             HomeVM homeVM = new HomeVM()
             {
-                Productos = await _unitOfWork.Producto.GetAll(includeProperties: "Categoria"),
+                Productos = (await _unitOfWork.Producto.GetAll(includeProperties: "Categoria"))
+                    .Where(p => p.PorcentajeDescuento > 0)
+                    .OrderByDescending(p =>p.PorcentajeDescuento)
+                    .Take(10),
                 CarouselImagenes = await _unitOfWork.Carousel.GetAll()
             };
             return View(homeVM);
@@ -68,6 +71,14 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             TempData["exito"] = "Carrito actualizado con exito";
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Buscar(string producto)
+        {
+            TempData["busqueda"] = producto;
+            IEnumerable<Producto> productos = await _unitOfWork.Producto.GetAll(p => p.Nombre.Contains(producto));
+            return View(productos);
         }
 
     }

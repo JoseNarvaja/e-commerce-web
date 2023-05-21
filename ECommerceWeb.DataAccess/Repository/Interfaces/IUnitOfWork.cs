@@ -14,6 +14,7 @@ namespace ECommerceWeb.DataAccess.Repository.Interfaces
         public IUsuarioRepository Usuario { get; }
         public IPedidoRepository Pedido { get; }
         public IPedidoDetalleRepository PedidoDetalle { get; }
+        public ICarouselRepository Carousel { get; }
 
         Task Save();
     }

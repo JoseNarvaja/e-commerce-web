@@ -8,3 +8,8 @@
     max-height: 340px;
     object-fit: cover;
 }
+
+.img-carousel {
+    max-height: 500px !important;
+    object-fit: cover !important;
+}

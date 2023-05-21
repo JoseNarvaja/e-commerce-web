@@ -65,6 +65,12 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
                 Pedido = new()
             };
 
+            if(CarritoComprasVM.Carritos.Count() <= 0)
+            {
+                TempData["error"] = "No hay productos en el carrito";
+                return RedirectToAction(nameof(Index));
+            }
+
             CarritoComprasVM.Pedido.Usuario = await _unitOfWork.Usuario.GetFirstOrDefault(u => u.Id == idUsuario);
 
             CarritoComprasVM.Pedido.Nombre = CarritoComprasVM.Pedido.Usuario.Nombre;

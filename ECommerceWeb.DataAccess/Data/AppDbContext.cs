@@ -18,5 +18,6 @@ namespace ECommerceWeb.DataAccess.Data
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<PedidoDetalle> PedidoDetalle { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Carousel> Carousel { get; set; }
     }
 }

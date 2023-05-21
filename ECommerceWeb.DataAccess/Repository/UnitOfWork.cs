@@ -20,6 +20,7 @@ namespace ECommerceWeb.DataAccess.Repository
             Usuario = new UsuarioRepository(contexto);
             Pedido = new PedidoRepository(contexto);
             PedidoDetalle = new PedidoDetalleRepository(contexto);
+            Carousel= new CarouselRepository(contexto);
         }
 
         public IProductoRepository Producto { get; private set; }
@@ -33,6 +34,7 @@ namespace ECommerceWeb.DataAccess.Repository
         public IPedidoRepository Pedido { get; private set; }
 
         public IPedidoDetalleRepository PedidoDetalle { get; private set; }
+        public ICarouselRepository Carousel { get; private set; }
 
         public async Task Save()
         {
