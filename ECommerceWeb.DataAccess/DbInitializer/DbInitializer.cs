@@ -53,6 +53,31 @@ namespace ECommerceWeb.DataAccess.DbInitializer
                 _userManager.AddToRoleAsync(admin, SD.RolAdmin).GetAwaiter().GetResult();
             }
 
+            if (_context.Carousel.FirstOrDefault(c => c.Nombre == "Primera") == null)
+            {
+                Carousel primera = new Carousel()
+                {
+                    Nombre = "Primera",
+                    Titulo = "Completar",
+                    Descripcion = "Completar"
+                };
+                Carousel segunda = new Carousel()
+                {
+                    Nombre = "Segunda",
+                    Titulo = "Completar",
+                    Descripcion = "Completar"
+                };
+                Carousel tercera = new Carousel()
+                {
+                    Nombre = "Tercera",
+                    Titulo = "Completar",
+                    Descripcion = "Completar"
+                };
+                _context.Carousel.AddRange(primera, segunda, tercera);
+                _context.SaveChanges();
+
+            }
+
             return;
         }
     }

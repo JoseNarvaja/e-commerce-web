@@ -136,6 +136,15 @@
                     </div>
                     <div class="row my-2">
                         <div class="col-12 col-md-2">
+                            <label>ID del pago</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input asp-for="Pedido.IdPagoStripe" readonly class="form-control" />
+                            <span asp-validation-for="Pedido.IdPagoStripe" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-12 col-md-2">
                             <label>Fecha de pedido</label>
                         </div>
                         <div class="col-12 col-md-8">

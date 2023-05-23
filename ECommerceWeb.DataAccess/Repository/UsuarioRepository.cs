@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.Models;
-using ECommerceWeb.DataAccess.Repository.Interfaces;
 using ECommerceWeb.DataAccess.Data;
 
 namespace ECommerceWeb.DataAccess.Repository

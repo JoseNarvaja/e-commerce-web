@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,7 +59,7 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
-
+builder.Services.Configure<StripeConfiguracion>(builder.Configuration.GetSection("Stripe"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -73,6 +74,7 @@ else
     app.UseHsts();
 }
 
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:ClaveSecreta").Get<string>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

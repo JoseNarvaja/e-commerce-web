@@ -14,6 +14,8 @@ namespace ECommerceWeb.Models
     {
         [Key]
         public int IdPedido { get; set; }
+        public string? IdPagoStripe { get; set; }
+        public string? IdStripe { get; set;}
 
         [Required]
         public DateTime FechaPedido { get; set; }
