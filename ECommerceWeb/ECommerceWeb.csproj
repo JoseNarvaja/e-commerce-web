@@ -30,6 +30,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\carousel\" />
+    <Folder Include="wwwroot\images\carousel\" />
+    <Folder Include="wwwroot\images\productos\" />
     <Folder Include="wwwroot\images\productos\" />
   </ItemGroup>
 
