@@ -74,12 +74,12 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                 if(file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images\productos");
+                    var uploads = Path.Combine(wwwRootPath, @"images/productos");
                     var extension = Path.GetExtension(file.FileName);
 
                     if(productoVM.Producto.URLImagen!= null)
                     {
-                        var oldPath = Path.Combine(wwwRootPath, productoVM.Producto.URLImagen.TrimStart('\\'));
+                        var oldPath = Path.Combine(wwwRootPath, productoVM.Producto.URLImagen.TrimStart('//'));
                         if (System.IO.File.Exists(oldPath))
                         {
                             System.IO.File.Delete(oldPath);
@@ -90,7 +90,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    productoVM.Producto.URLImagen = @"\images\productos\" + fileName + extension;
+                    productoVM.Producto.URLImagen = @"/images/productos/" + fileName + extension;
 
                 }
                if(productoVM.Producto.IdProducto == 0)

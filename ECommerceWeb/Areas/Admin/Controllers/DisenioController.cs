@@ -52,7 +52,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
             string nombreImagen = carousel.Nombre;
-            var carpetaDestino = Path.Combine(wwwRootPath, @"images\carousel");
+            var carpetaDestino = Path.Combine(wwwRootPath, @"images/carousel");
             if (imagen != null)
             {
                 using (var fileStreams = new FileStream(Path.Combine(carpetaDestino, nombreImagen + ".webp"), FileMode.Create))
