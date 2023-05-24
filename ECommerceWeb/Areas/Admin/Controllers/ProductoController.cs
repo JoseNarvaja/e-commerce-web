@@ -79,7 +79,7 @@ namespace ECommerceWeb.Areas.Admin.Controllers
 
                     if(productoVM.Producto.URLImagen!= null)
                     {
-                        var oldPath = Path.Combine(wwwRootPath, productoVM.Producto.URLImagen.TrimStart('//'));
+                        var oldPath = Path.Combine(wwwRootPath, productoVM.Producto.URLImagen.TrimStart('/'));
                         if (System.IO.File.Exists(oldPath))
                         {
                             System.IO.File.Delete(oldPath);
