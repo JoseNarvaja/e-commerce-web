@@ -169,7 +169,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
             await _emailSender.SendEmailAsync(CarritoComprasVM.Pedido.Usuario.Email, "Pedido realizado - ecommerce web", messageBody);
 
-            string dominio = "https://localhost:7003/";
+            string dominio = Request.Scheme + "://" + Request.Host.Value + "/";
             var options = new SessionCreateOptions
             {
                 SuccessUrl = dominio + $"Cliente/Carrito/ConfirmacionPedido?id={CarritoComprasVM.Pedido.IdPedido}",
