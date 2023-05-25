@@ -71,15 +71,20 @@ namespace ECommerceWeb.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 string wwwRootPath = _hostEnviroment.WebRootPath;
-                if(file != null)
+                if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images/productos");
+                    var uploads = Path.Combine(wwwRootPath, @"images\productos");
                     var extension = Path.GetExtension(file.FileName);
 
-                    if(productoVM.Producto.URLImagen!= null)
+                    if (!Directory.Exists(uploads))
                     {
-                        var oldPath = Path.Combine(wwwRootPath, productoVM.Producto.URLImagen.TrimStart('/'));
+                        Directory.CreateDirectory(uploads);
+                    }
+
+                    if (productoVM.Producto.URLImagen != null)
+                    {
+                        var oldPath = Path.Combine(wwwRootPath, productoVM.Producto.URLImagen.TrimStart('\\'));
                         if (System.IO.File.Exists(oldPath))
                         {
                             System.IO.File.Delete(oldPath);
@@ -90,10 +95,10 @@ namespace ECommerceWeb.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    productoVM.Producto.URLImagen = @"/images/productos/" + fileName + extension;
+                    productoVM.Producto.URLImagen = @"\images\productos\" + fileName + extension;
 
                 }
-               if(productoVM.Producto.IdProducto == 0)
+                if (productoVM.Producto.IdProducto == 0)
                 {
                     await _unitOfWork.Producto.Add(productoVM.Producto);
                     TempData["exito"] = "Producto creado con éxito";
