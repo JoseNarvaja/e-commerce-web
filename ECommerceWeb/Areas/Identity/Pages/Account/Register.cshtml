@@ -14,14 +14,14 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6">
                                 <div class="form-floating mb-3">
                                     <input asp-for="Input.Nombre" class="form-control" aria-required="true" placeholder="Nombre" />
                                     <label asp-for="Input.Nombre">Nombre</label>
                                     <span asp-validation-for="Input.Nombre" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6">
                                 <div class="form-floating mb-3">
                                     <input asp-for="Input.Apellido" class="form-control" aria-required="true" placeholder="Apellido" />
                                     <label asp-for="Input.Apellido">Apellido</label>
@@ -35,14 +35,14 @@
                             <span asp-validation-for="Input.Email" class="text-danger"></span>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6">
                                 <div class="form-floating mb-3">
                                     <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="contraseña" />
                                     <label asp-for="Input.Password">Contraseña</label>
                                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-6">
                                 <div class="form-floating mb-3">
                                     <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="contraseña" />
                                     <label asp-for="Input.ConfirmPassword">Confirmar Contraseña</label>

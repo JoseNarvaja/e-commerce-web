@@ -223,6 +223,7 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
             if(session.PaymentStatus.ToLower() == "paid")
             {
                 pedido.IdPagoStripe = session.PaymentIntentId;
+                pedido.FechaPago = DateTime.Now;
                 await _unitOfWork.Pedido.UpdateEstadoPago(pedido, SD.EstadoPagoConcretado);
                 await _unitOfWork.Save();
             }
