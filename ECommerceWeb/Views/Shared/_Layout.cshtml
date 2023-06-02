@@ -1,7 +1,8 @@
 ﻿@using ECommerceWeb.Utility;
+@using ECommerceWeb.DataAccess.Repository.Interfaces;
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor;
-
+@inject IUnitOfWork UnitOfWork
 
 <!DOCTYPE html>
 <html lang="es">
@@ -35,6 +36,7 @@
                     <li class="nav-item mx-1">
                         <a class="nav-link" asp-area="Admin" asp-controller="Pedidos" asp-action="Index">Gestionar Pedidos</a>
                     </li>
+                    @await Component.InvokeAsync("Categorias")
                     @if (User.IsInRole(SD.RolAdmin))
                     {
                         <li class="nav-item dropdown">

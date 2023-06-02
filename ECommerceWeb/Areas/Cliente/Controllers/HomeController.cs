@@ -74,10 +74,20 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Buscar(string producto)
+        public async Task<IActionResult> Buscar(string? producto, string? categoria)
         {
-            TempData["busqueda"] = producto;
-            IEnumerable<Producto> productos = await _unitOfWork.Producto.GetAll(p => p.Nombre.Contains(producto));
+            IEnumerable<Producto> productos;
+            if (producto != null)
+            {
+                TempData["busqueda"] = producto;
+                productos = await _unitOfWork.Producto.GetAll(p => p.Nombre.Contains(producto));
+            }
+            else
+            {
+                TempData["categoria"] = categoria;
+                productos = await _unitOfWork.Producto.GetAll(p => p.Categoria.Nombre == categoria, includeProperties:"Categoria");
+            }
+            
             return View(productos);
         }
 
