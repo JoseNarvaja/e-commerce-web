@@ -31,6 +31,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\carousel\" />
     <Folder Include="wwwroot\images\carousel\" />
+    <Folder Include="wwwroot\images\sobre_el_proyecto\" />
     <Folder Include="wwwroot\images\productos\" />
     <Folder Include="wwwroot\images\productos\" />
   </ItemGroup>

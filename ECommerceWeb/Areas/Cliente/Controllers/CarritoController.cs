@@ -149,7 +149,6 @@ namespace ECommerceWeb.Areas.Cliente.Controllers
 
 
             await _unitOfWork.Save();
-            TempData["exito"] = "Pedido realizado con exito";
 
             var htmlBody = "";
             using (StreamReader streamReader = System.IO.File.OpenText(pathTemplate))
